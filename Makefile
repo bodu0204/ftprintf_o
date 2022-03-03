@@ -4,6 +4,7 @@ OBJS		= $(SRC:%.c=%.o)
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -I./
 SUBMIT		= git@vogsphere-v2.42tokyo.jp:vogsphere/intra-uuid-788a2123-b5c8-4fa9-9089-297b49b2c9fa-4035245-blyu
+SUBMIT_d	= libftprintf_submit_files
 
 all : $(NAME)
 
@@ -13,20 +14,22 @@ $(NAME) : $(OBJS)
 .c.o : $(SRC)
 	$(CC) $(CFLAGS) -c $^
 
-push :
+push : fclean
 	git add .
 	git commit -m "commit form makefile"
 	git push
 
 submit : push
-	rm -rf ../$(SUBMIT)
-	git clone $(SUBMIT)
-	rm -rf $(SUBMIT)/*
+	git clone $(SUBMIT) $(SUBMIT_d)
+	rm -rf $(SUBMIT_d)/*
+	cp $(SRC) $(SUBMIT_d)
+	mv $(SUBMIT_d) ../
 
 clean :
 	rm -f $(OBJS_b) $(OBJS)
 
 fclean : clean
 	rm -f $(NAME)
+	rm -rf $(SUBMIT_d)
 
 re : fclean all
