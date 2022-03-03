@@ -19,9 +19,9 @@ push :
 	git push
 
 submit : push
-	rm -rf ../$(OBJS)
-	git clone $(OBJS)
-	rm -rf $(OBJS)/*
+	rm -rf ../$(SUBMIT)
+	git clone $(SUBMIT)
+	rm -rf $(SUBMIT)/*
 
 clean :
 	rm -f $(OBJS_b) $(OBJS)
