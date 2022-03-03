@@ -22,7 +22,8 @@ push : fclean
 submit : push
 	git clone $(SUBMIT) $(SUBMIT_d)
 	rm -f $(SUBMIT_d)/*
-	cp $(SRC) $(SUBMIT_d)
+	cp -f $(SRC) $(SUBMIT_d)
+	rm -rf ../$(SUBMIT_d)
 	mv $(SUBMIT_d) ../
 
 clean :
