@@ -19,11 +19,10 @@ push : fclean
 	git commit -m "commit form makefile"
 	git push
 
-submit : push
+submit : push outclean
 	git clone $(SUBMIT) $(SUBMIT_d)
 	rm -f $(SUBMIT_d)/*
-#	cp -f $(SRC) $(SUBMIT_d)
-	rm -rf ../$(SUBMIT_d)
+	cp $(SRC) $(SUBMIT_d)
 	mv $(SUBMIT_d) ../
 
 clean :
@@ -32,5 +31,10 @@ clean :
 fclean : clean
 	rm -f $(NAME)
 	rm -rf $(SUBMIT_d)
+
+outclean :
+	rm -rf ../$(SUBMIT_d)
+
+allclean : fclean outclean
 
 re : fclean all
