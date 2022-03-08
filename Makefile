@@ -22,7 +22,7 @@ push : fclean
 	git push
 
 submit : push outclean
-	makdir $(SUBMIT_d)
+	mkdir $(SUBMIT_d)
 	cp $(SRC)* $(SUBMIT_d)
 	mv $(SUBMIT_d) ../
 
