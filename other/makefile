@@ -23,7 +23,7 @@ genlibft :
 
 push : fclean
 	git add .
-	git commit -m "commit form makefile"
+	git commit --allow-empty -m "commit form makefile"
 	git push
 
 clean :
