@@ -2,32 +2,28 @@ NAME		= libftprintf.a
 SRC_PASS	= src/
 OTHER_PASS	= other/
 OBJS		= $(SRC:%.c=%.o)
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -I./
 SUBMIT_42	= git@vogsphere-v2.42tokyo.jp:vogsphere/intra-uuid-788a2123-b5c8-4fa9-9089-297b49b2c9fa-4035245-blyu
-SUBMIT_42d	= libftprintf_submit42_files
-SUBMIT_d	= libftprintf_submit_files
+SUBMIT_42d	= libftprintf_submit42_files/
+SUBMIT_d	= libftprintf_submit_files/
 TESTER		= https://github.com/Tripouille/printfTester.git
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	ar rs $(NAME) $^
-
-.c.o : $(SRC)
-	$(CC) $(CFLAGS) -c $^
+$(NAME) : submitfile
+	cd "$(PWD)/$(SUBMIT_d)" && make all
+	mv $(SUBMIT_d)$(NAME) ./
 
 push : fclean
 	git add .
 	git commit -m "commit form makefile"
 	git push
 
-submitfile : push outclean
+submitfile : push
 	mkdir $(SUBMIT_d)
 	cp $(SRC_PASS)* $(SUBMIT_d)
 	cp $(OTHER_PASS)* $(SUBMIT_d)
 
-submit : submitfile
+submit : outclean submitfile
 	mv $(SUBMIT_d) ../
 
 submit42 : push outclean submitfile
@@ -37,10 +33,7 @@ submit42 : push outclean submitfile
 	cp $(SUBMIT_d)* $(SUBMIT_42d)
 	cd "$(PWD)/$(SUBMIT_42d)" && make push
 
-clean :
-	rm -f $(OBJS_b) $(OBJS)
-
-fclean : clean
+fclean :
 	rm -f $(NAME)
 	rm -rf $(SUBMIT_d)
 
