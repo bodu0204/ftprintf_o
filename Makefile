@@ -32,7 +32,7 @@ submit42 : push outclean submitfile
 	rm -rf $(SUBMIT_42d)/*
 	cp $(SUBMIT_d)* $(SUBMIT_42d)
 	rm -rf $(SUBMIT_d)
-	cd "$(PWD)/../$(SUBMIT_42d)" && make push
+	cd "$(PWD)/$(SUBMIT_42d)" && make push
 	mv mv $(SUBMIT_42d) ../
 
 fclean :
