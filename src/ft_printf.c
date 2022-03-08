@@ -1,7 +1,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-int	ft_printf(const char *	fmt, ...)
+int	ft_printf(const char	*fmt, ...)
 {
 	va_list	ap;
 	size_t	rtn;
@@ -25,10 +25,10 @@ int	ft_printf(const char *	fmt, ...)
 	return (output(NULL, 0, ap));
 }
 
-int	output(const char *	str, size_t len, va_list	ap)
+int	output(const char	*str, size_t	len, va_list	ap)
 {
 	static size_t	putlen = 0;
-	int flag;
+	int				flag;
 
 	if (!str)
 	{
