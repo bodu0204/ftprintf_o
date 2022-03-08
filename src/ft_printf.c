@@ -1,12 +1,6 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-enum
-{
-	OUTPUT,
-	PUTLEN,
-};
-
 int	ft_printf(const char *	fmt, ...)
 {
 	va_list	ap;
