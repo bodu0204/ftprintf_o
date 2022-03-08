@@ -3,10 +3,9 @@ SRC			=
 OBJS		= $(SRC:%.c=%.o)
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -I./
-SUBMIT		= git@vogsphere-v2.42tokyo.jp:vogsphere/intra-uuid-788a2123-b5c8-4fa9-9089-297b49b2c9fa-4035245-blyu
 SUBMIT_d	= libftprintf_submit_files
-LIBFT_O		= https://github.com/bodu0204/libft_o.git
-LIBFT		= libft
+LIBFT_GIT	= https://github.com/bodu0204/libft_o.git
+LIBFT_d		= libft_o/
 
 all : $(NAME)
 
@@ -16,19 +15,17 @@ $(NAME) : $(OBJS)
 .c.o : $(SRC)
 	$(CC) $(CFLAGS) -c $^
 
+genlibft :
+	git clone $(LIBFT_GIT) $(LIBFT_GIT)
+	cd "$(PWD)/$(LIBFT_d)" && make all
+
 push : fclean
 	git add .
 	git commit -m "commit form makefile"
 	git push
 
-submit : push outclean
-	git clone $(SUBMIT) $(SUBMIT_d)
-	rm -f $(SUBMIT_d)/*
-#	cp $(SRC) $(SUBMIT_d)
-	mv $(SUBMIT_d) ../
-
 clean :
-	rm -f $(OBJS_b) $(OBJS)
+	rm -f $(OBJS)
 
 fclean : clean
 	rm -f $(NAME)
