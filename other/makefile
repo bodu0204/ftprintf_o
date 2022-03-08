@@ -3,10 +3,10 @@ SRC			=
 OBJS		= $(SRC:%.c=%.o)
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -I./
-SUBMIT_42	= git@vogsphere-v2.42tokyo.jp:vogsphere/intra-uuid-788a2123-b5c8-4fa9-9089-297b49b2c9fa-4035245-blyu
-SUBMIT_42d	= libftprintf_submit42_files
+SUBMIT		= git@vogsphere-v2.42tokyo.jp:vogsphere/intra-uuid-788a2123-b5c8-4fa9-9089-297b49b2c9fa-4035245-blyu
 SUBMIT_d	= libftprintf_submit_files
-TESTER		= https://github.com/Tripouille/printfTester.git
+LIBFT_O		= https://github.com/bodu0204/libft_o.git
+LIBFT		= libft
 
 all : $(NAME)
 
@@ -22,16 +22,10 @@ push : fclean
 	git push
 
 submit : push outclean
-	makdir $(SUBMIT_d)
-#	cp $(SRC) $$(SUBMIT_d)
+	git clone $(SUBMIT) $(SUBMIT_d)
+	rm -f $(SUBMIT_d)/*
+#	cp $(SRC) $(SUBMIT_d)
 	mv $(SUBMIT_d) ../
-
-submit42 : push outclean
-	git clone $(SUBMIT_42) $(SUBMIT_42d)
-	rm -f $(SUBMIT_42d)/*
-	rm -rf $(SUBMIT_42d)/*
-#	cp $(SRC) $(SUBMIT_42d)
-	mv $(SUBMIT_42d) ../
 
 clean :
 	rm -f $(OBJS_b) $(OBJS)
