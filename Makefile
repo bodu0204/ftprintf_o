@@ -1,5 +1,5 @@
 NAME		= libftprintf.a
-SRC			=
+SRC_PASS	= src/
 OBJS		= $(SRC:%.c=%.o)
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -I./
@@ -23,7 +23,7 @@ push : fclean
 
 submit : push outclean
 	makdir $(SUBMIT_d)
-#	cp $(SRC) $$(SUBMIT_d)
+	cp $(SRC)* $(SUBMIT_d)
 	mv $(SUBMIT_d) ../
 
 submit42 : push outclean
