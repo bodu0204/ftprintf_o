@@ -38,7 +38,7 @@ submit42 : push outclean submitfile
 fclean :
 	rm -f $(NAME)
 	rm -rf $(SUBMIT_d)
-	rm -rf $(SUBMIT_d)
+	rm -rf $(SUBMIT_42d)
 
 outclean :
 	rm -rf ../$(SUBMIT_d)
