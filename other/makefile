@@ -18,6 +18,7 @@ $(NAME) : $(OBJS)
 genlibft :
 	git clone $(LIBFT_GIT) $(LIBFT_d)
 	cd "$(PWD)/$(LIBFT_d)" && make all
+	cp $(LIBFT_d)libft.a ./
 
 push : fclean
 	git add .
@@ -30,6 +31,7 @@ clean :
 fclean : clean
 	rm -f $(NAME)
 	rm -rf $(SUBMIT_d)
+	rm -rf $(LIBFT_d)
 
 outclean :
 	rm -rf ../$(SUBMIT_d)

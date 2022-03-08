@@ -22,18 +22,20 @@ push : fclean
 	git commit -m "commit form makefile"
 	git push
 
-submit : push outclean
+submitfile : push outclean
 	mkdir $(SUBMIT_d)
 	cp $(SRC_PASS)* $(SUBMIT_d)
 	cp $(OTHER_PASS)* $(SUBMIT_d)
+
+submit : submitfile
 	mv $(SUBMIT_d) ../
 
-submit42 : push outclean
+submit42 : push outclean submitfile
 	git clone $(SUBMIT_42) $(SUBMIT_42d)
 	rm -f $(SUBMIT_42d)/*
 	rm -rf $(SUBMIT_42d)/*
-#	cp $(SRC) $(SUBMIT_42d)
-	mv $(SUBMIT_42d) ../
+	cp $(SUBMIT_d)* $(SUBMIT_42d)
+	cd "$(PWD)/$(SUBMIT_42d)" && make push
 
 clean :
 	rm -f $(OBJS_b) $(OBJS)
