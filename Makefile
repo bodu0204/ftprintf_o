@@ -23,7 +23,7 @@ push : fclean
 
 submit : push outclean
 	mkdir $(SUBMIT_d)
-	cp $(SRC)* $(SUBMIT_d)
+	cp $(SRC_PASS)* $(SUBMIT_d)
 	mv $(SUBMIT_d) ../
 
 submit42 : push outclean
@@ -42,6 +42,7 @@ fclean : clean
 
 outclean :
 	rm -rf ../$(SUBMIT_d)
+	rm -rf ../$(SUBMIT_42d)
 
 allclean : fclean outclean
 
