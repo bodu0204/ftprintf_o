@@ -16,7 +16,7 @@ $(NAME) : submitfile
 push : fclean
 	git add .
 	git commit -m "commit form makefile"
-	git push
+	git push -f
 
 submitfile : push
 	mkdir $(SUBMIT_d)

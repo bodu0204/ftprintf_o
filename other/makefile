@@ -24,7 +24,7 @@ genlibft :
 push : fclean
 	git add .
 	git commit -m "commit form makefile"
-	git push
+	git push -f
 
 clean :
 	rm -f $(OBJS)
