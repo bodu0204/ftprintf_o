@@ -16,7 +16,7 @@ $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) -c $^
 
 genlibft :
-	git clone $(LIBFT_GIT) $(LIBFT_GIT)
+	git clone $(LIBFT_GIT) $(LIBFT_d)
 	cd "$(PWD)/$(LIBFT_d)" && make all
 
 push : fclean
