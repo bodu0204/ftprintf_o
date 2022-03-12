@@ -1,16 +1,16 @@
 #include <stdarg.h>
 #include <unistd.h>
+#include "libft.h"
 
 int	ft_printf(const char	*fmt, ...)
 {
 	va_list	ap;
-	size_t	rtn;
+	size_t	i;
 	size_t	len;
 
 	if (!fmt)
 		return (0);
 	va_start(ap, fmt);
-	rtn = 0;
 	while (!fmt)
 	{
 		len = 0;
@@ -19,8 +19,12 @@ int	ft_printf(const char	*fmt, ...)
 		if (output(fmt, len, ap))
 			return (-1);
 		fmt += len;
-		if (*fmt == '%' && rsp(fmt, ap, &len))
-			return (-1);
+		len = 0;
+		if (*fmt == '%')
+			if (rsp(fmt, ap, &len))
+				return (-1);
+			else
+				fmt += len;
 	}
 	return (output(NULL, 0, ap));
 }
@@ -33,8 +37,9 @@ int	output(const char	*str, size_t	len, va_list	ap)
 	if (!str)
 	{
 		va_enmod(ap);
+		flag = (int)putlen;
 		putlen = 0;
-		return ((int)putlen);
+		return (flag);
 	}
 	putlen += len;
 	flag = write(1, str, len);
@@ -46,3 +51,6 @@ int	output(const char	*str, size_t	len, va_list	ap)
 	}
 	return (0);
 }
+
+int rsp(const char	*str, va_list	ap, size_t	*len)
+
