@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include "libft.h"
 
+
 int	ft_printf(const char	*fmt, ...)
 {
 	va_list	ap;
@@ -52,5 +53,12 @@ int	output(const char	*str, size_t	len, va_list	ap)
 	return (0);
 }
 
-int rsp(const char	*str, va_list	ap, size_t	*len)
+int	rsp(const char	*str, va_list	ap, size_t	*len)
+{
+	int	rtn;
 
+	rtn = 0;
+	*len = 1;
+	if (str[*len] == 'c')
+
+}
