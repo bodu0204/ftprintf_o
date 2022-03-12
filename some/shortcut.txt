@@ -1,0 +1,227 @@
+よく使うコマンド====================================================================================
+
+norminette -R CheckForbiddenSourceHeader
+
+
+
+norminette -R CheckDefine
+
+
+
+gcc -Wall -Wextra -Werror
+
+
+
+レビューの設定======================================================================================
+
+https://guacamole.42tokyo.jp/#/
+
+レビュワー (レビューする人) は、ssh-clusterで以下のコマンドを打ちます。
+    0. sshkeyを登録
+    1. cd /tmp
+    2. git clone <提出物のGit-URL> <リポジトリーの名前>
+    3. chmod -R 777 <リポジトリーの名前>
+    4. su eval
+    5. # passwordはevalです。
+    6. cd <リポジトリーの名前>
+    7. tmux new -s <レビュワーのログイン
+
+
+レビュイー (レビューされる人) は、レビュワーと同じホストにGuacamoleで接続し、以下のコマンドを打ちます。
+    1. su eval
+    2. #passwordはevalです。
+    3.  tmux attach -t <レビュワーのログイン>
+
+レビュワーとレビュイーが同じ画面を閲覧し操作することができたらセットアップ完了です。
+
+
+
+
+メモ===============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+便利な関数=========================================================================================
+
+
+
+
+   メモリリーク=====================================================================================
+
+void end(void)__attribute__((destructor));
+
+void end(void)
+{
+    system("leaks push_swap");
+}
+
+
+
+
+  メモリを表示======================================================================================
+
+void show(char* s)
+{
+    size_t i;
+    size_t ii;
+    size_t m;
+    size_t line;
+
+    line = 32;
+    m = 0;
+    ii = 0;
+    printf("\nstart:%p\n", s);
+    while (m < 3)
+    {
+        printf("|");
+        i = 0;
+        while (i < line)
+        {
+            printf("%7zu|", ii + i + 1);
+            i++;
+        }
+        printf("\n|");
+        i = 0;
+        while (i < line)
+        {
+            if (*(s + ii + i) == 0 && !m)
+                m++;
+            printf("%4d(%c)|", (int)*(s + ii + i), (*(s + ii + i) > 32 && *(s + ii + i) < 127) ? *(s + ii + i) : 32);
+            i++;
+        }
+        printf("\n");
+        if (m > 0)
+            m++;
+        ii += line;
+    }
+
+}
+
+
+
+void show256(char* s)
+{
+    size_t i;
+    size_t ii;
+    size_t m;
+    size_t line;
+
+    line = 32;
+    m = 0;
+    ii = 0;
+    printf("\nstart:%p\n", s);
+    while (ii < 256)
+    {
+        printf("|");
+        i = 0;
+        while (i < line)
+        {
+            printf("%7zu|", ii + i + 1);
+            i++;
+        }
+        printf("\n|");
+        i = 0;
+        while (i < line)
+        {
+            printf("%4d(%c)|", (int)*(s + ii + i), (*(s + ii + i) > 32 && *(s + ii + i) < 127) ? *(s + ii + i) : 32);
+            i++;
+        }
+        printf("\n");
+        ii += line;
+    }
+
+}
+
+
+
+void showpp(char **s)
+{
+    size_t i;
+    size_t ii;
+    size_t m;
+    size_t line;
+
+    line = 16;
+    m = 0;
+    ii = 0;
+    printf("\nstart:%p\n", s);
+    while (m < 3)
+    {
+        printf("|");
+        i = 0;
+        while (i < line)
+        {
+            printf("%14zu|", ii + i + 1);
+            i++;
+        }
+        printf("\n|");
+        i = 0;
+        while (i < line)
+        {
+            if (*(s + ii + i) == 0 && !m)
+                m++;
+            printf("%14p|", *(s + ii + i));
+            i++;
+        }
+        printf("\n");
+        if (m > 0)
+            m++;
+        ii += line;
+    }
+
+}
+
+

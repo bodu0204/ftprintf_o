@@ -34,19 +34,10 @@ int	output(const char	*str, size_t	len, va_list	ap)
 	{
 		va_enmod(ap);
 		putlen = 0;
-		return((int)putlen);
+		return ((int)putlen);
 	}
 	putlen += len;
-#ifdef REAL
-	while (len)
-	{
-		flag = -1 * !putchar(*str);
-		str++;
-		len--;
-	}
-#else
 	flag = write(1, str, len);
-#endif
 	if (flag == -1)
 	{
 		va_end(ap);
