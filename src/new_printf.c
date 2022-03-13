@@ -27,6 +27,13 @@ enum
 
 enum
 {
+	DEFAULT_right,
+	ZERO_right,
+	_left,
+};
+
+enum
+{
 	Ec,
 	Es,
 	Ep,
@@ -112,20 +119,27 @@ int	set_block(const char	*block, char	*s_blc[], size_t	*f_blc, va_list	ap)
 	else if (f_blc[CONTENT] == Eper)
 		s_blc[CONTENTSTR][0] = '%';
 	adjust(s_blc, f_blc);
+	if (f_blc[DIRECTION] == ZERO_right)
+	{
+		f_blc[ZERO] += f_blc[BLANK];
+		f_blc[BLANK] = 0;
+	}
 	return (0);
 }
 
 void	adjust(char	*s_blc[], size_t	*f_blc)
 {
 	f_blc[CONTENTLEN] = ft_strlen(s_blc[CONTENTSTR]);
-	f_blc[ZERO] -= f_blc[CONTENTLEN];
-	if (f_blc[ZERO] < 0)
+	if (f_blc[ZERO] < f_blc[CONTENTLEN])
 	{
-		f_blc[BLANK] += f_blc[ZERO];
-		f_blc[ZERO] = 0;
-		if (f_blc[BLANK] < 0)
+		if (f_blc[BLANK] + f_blc[ZERO] < f_blc[CONTENTLEN])
 			f_blc[BLANK] = 0;
+		else
+			f_blc[BLANK] -= f_blc[CONTENTLEN] - f_blc[ZERO];
+		f_blc[ZERO] = 0;
 	}
+	else
+		f_blc[ZERO] -= f_blc[CONTENTLEN];
 	if (f_blc[CONTENT] == Ep)
 		f_blc[SING] = ZEROX_0x;
 	if (f_blc[CONTENT] == EX)
@@ -136,6 +150,11 @@ void	adjust(char	*s_blc[], size_t	*f_blc)
 		f_blc[SING] = DEFAULT_none;
 	if (f_blc[CONTENT] == EX && !ft_memcmp(s_blc[CONTENTSTR], "0", 2))
 		f_blc[SING] = DEFAULT_none;
+	if (f_blc[CONTENT] == Eper)
+	{
+		f_blc[ZERO] = 0;
+		f_blc[SING] = DEFAULT_none;
+	}
 	return ;
 }
 
@@ -143,7 +162,7 @@ int	each_len(const char	*block, size_t	*f_blc)
 {
 	if (*block != '%')
 		return (0);
-	block++;
+	f_blc[ORDERLEN]++;
 	if (set_sing(block ,f_blc))
 		return (1);
 	if (set_len(block ,f_blc))

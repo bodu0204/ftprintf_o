@@ -1,4 +1,5 @@
-#ifndef FT_LIBFT_H
-# define FT_LIBFT_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
+#include "libft.h"
 
 #endif
