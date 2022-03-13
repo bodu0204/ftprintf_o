@@ -77,15 +77,15 @@ void	read_sing(const char	*block, size_t	*f_blc, size_t	*i)
 	while (1)
 	{
 		if (block[f_blc[ORDERLEN]] == '-')
-		i[0]++;
+			i[0]++;
 		else if (block[f_blc[ORDERLEN]] == '0')
-		i[1]++;
+			i[1]++;
 		else if (block[f_blc[ORDERLEN]] == '#')
-		i[2]++;
+			i[2]++;
 		else if (block[f_blc[ORDERLEN]] == '+')
-		i[3]++;
+			i[3]++;
 		else if (block[f_blc[ORDERLEN]] == ' ')
-		i[4]++;
+			i[4]++;
 		else
 			break ;
 		f_blc[ORDERLEN]++;
@@ -108,10 +108,12 @@ int	set_len(const char	*block, size_t	*f_blc)
 	if (i != f_blc[ORDERLEN] && block[f_blc[ORDERLEN]] == 'c')
 		return (1);
 	if (block[f_blc[ORDERLEN]] != 's' || block[f_blc[ORDERLEN]] != '%')
+	{
 		if (f_blc[BLANK] < f_blc[ZERO])
 			f_blc[BLANK] = 0;
 		else
 			f_blc[BLANK] -= f_blc[ZERO];
+	}
 	else
 		f_blc[ZERO] = 0;
 	return (0);
@@ -131,9 +133,9 @@ int	set_esc(char	c, size_t	s, size_t	d, size_t	*f_blc)
 		f_blc[CONTENT] = Ei;
 	else if (c == 'u' && s == DEFAULT_none)
 		f_blc[CONTENT] = Eu;
-	else if (c == 'x'&& (s == DEFAULT_none || s == ZEROX_0x))
+	else if (c == 'x' && (s == DEFAULT_none || s == ZEROX_0x))
 		f_blc[CONTENT] = Ex;
-	else if (c == 'X'&& (s == DEFAULT_none || s == ZEROX_0x))
+	else if (c == 'X' && (s == DEFAULT_none || s == ZEROX_0x))
 		f_blc[CONTENT] = EX;
 	else if (c == '%')
 		f_blc[CONTENT] = Eper;
