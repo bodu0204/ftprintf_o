@@ -58,7 +58,7 @@ enum
 int	ft_printf(const char	*fmt, ...)
 {
 	va_list	ap;
-	int i;
+	int		i;
 
 	if (!fmt)
 		return (-1);
@@ -87,7 +87,7 @@ int	put_block(const char	*s, const char	*e, va_list	ap)
 		f_blc[BLOCKLEN]++;
 	}
 	f_blc[BLOCKLEN]++;
-	if (set_block(e, s_blc, f_blc, ap))
+	if (mkblc(e, s_blc, f_blc, ap))
 		return (-1);
 	if (e > s)
 		putlen = put_block(s, e - 1, ap);
@@ -99,11 +99,11 @@ int	put_block(const char	*s, const char	*e, va_list	ap)
 	return (putlen + i);
 }
 
-int	set_block(const char	*block, char	*s_blc[], size_t	*f_blc, va_list	ap)
+int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 {
-	if (each_len(block, f_blc))
+	if (each_len(blc, f_blc))
 		return (1);
-	s_blc[FMTSTR] = block + f_blc[ORDERLEN];
+	s_blc[FMTSTR] = blc + f_blc[ORDERLEN];
 	if (f_blc[CONTENT] == Ec)
 		s_blc[CONTENTSTR][0] = va_arg(ap, char);
 	else if (f_blc[CONTENT] == Es)
@@ -160,11 +160,11 @@ int	each_len(const char	*block, size_t	*f_blc)
 	if (*block != '%')
 		return (0);
 	f_blc[ORDERLEN]++;
-	if (set_sing(block ,f_blc))
+	if (set_sing(block, f_blc))
 		return (1);
-	if (set_len(block ,f_blc))
-		return(1);
-	if (set_esc(block ,f_blc))
-		return(1);
+	if (set_len(block, f_blc))
+		return (1);
+	if (set_esc(block[f_blc[ORDERLEN]], f_blc[SING], f_blc[DIRECTION], f_blc))
+		return (1);
 	return (0);
 }
