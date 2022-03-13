@@ -59,6 +59,4 @@ int	rsp(const char	*str, va_list	ap, size_t	*len)
 
 	rtn = 0;
 	*len = 1;
-	if (str[*len] == 'c')
-
 }

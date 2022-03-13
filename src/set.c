@@ -107,7 +107,7 @@ int	set_len(const char	*block, size_t	*f_blc)
 		f_blc[ORDERLEN]++;
 	if (i != f_blc[ORDERLEN] && block[f_blc[ORDERLEN]] == 'c')
 		return (1);
-	if (block[f_blc[ORDERLEN]] != 's')
+	if (block[f_blc[ORDERLEN]] != 's' || block[f_blc[ORDERLEN]] != '%')
 		if (f_blc[BLANK] < f_blc[ZERO])
 			f_blc[BLANK] = 0;
 		else
@@ -124,9 +124,9 @@ int	set_esc(const char	*block, size_t	*f_blc)
 
 	c = block[f_blc[ORDERLEN]];
 	s = f_blc[SING];
-	if (c == 'c' && s == DEFAULT_none)
+	if (c == 'c' && s == DEFAULT_none && f_blc[DIRECTION] != ZERO_right)
 		f_blc[CONTENT] = Ec;
-	else if (c == 's' && s == DEFAULT_none)
+	else if (c == 's' && s == DEFAULT_none && f_blc[DIRECTION] != ZERO_right)
 		f_blc[CONTENT] = Es;
 	else if (c == 'p' && s == DEFAULT_none)
 		f_blc[CONTENT] = Ep;

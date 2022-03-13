@@ -151,10 +151,7 @@ void	adjust(char	*s_blc[], size_t	*f_blc)
 	if (f_blc[CONTENT] == EX && !ft_memcmp(s_blc[CONTENTSTR], "0", 2))
 		f_blc[SING] = DEFAULT_none;
 	if (f_blc[CONTENT] == Eper)
-	{
-		f_blc[ZERO] = 0;
 		f_blc[SING] = DEFAULT_none;
-	}
 	return ;
 }
 
