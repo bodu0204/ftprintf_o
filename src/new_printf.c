@@ -8,8 +8,8 @@ enum
 	BLANK,
 	SING,
 	ZERO,
-	CONTENTLEN,
 	CONTENT,
+	CONTENTLEN,
 	ORDERLEN,
 	BLOCKLEN,
 	B_FMT,
@@ -17,21 +17,14 @@ enum
 
 enum
 {
-	Ec,
-	Es,
-	Ep,
-	Ed,
-	Ei,
-	Eu,
-	Ex,
-	EX,
-	Eper,
-	ERROR,
+	Ten,
+	Sixteen,
+	SIXTEEN,
 };
 
 enum
 {
-	Defalt,
+	Ec,
 	Es,
 	Ep,
 	Ed,
@@ -96,11 +89,27 @@ int	put_block(const char	*s, const char	*e, va_list	ap)
 	return (putlen + i);
 }
 
-int	set_block(const char	*block, char	*s_blc[], size_t	*f_blc, va_list	ap)
+int	set_block(const char	*block, char	*s_blc[], size_t	*f_blc, va_list	ap)/* %pと%x時の0x問題未解決 */
 {
 	if (each_len(block, f_blc))
 		return (1);
 	s_blc[FMTSTR] = block + f_blc[ORDERLEN];
-	if (f_blc[ORDERLEN] == Ec)
-		*s_blc[CONTENTSTR] = va_arg(ap, char);
+	if (f_blc[CONTENT] == Ec)
+		s_blc[CONTENTSTR][0] = va_arg(ap, char);
+	else if (f_blc[CONTENT] == Es)
+		s_blc[CONTENTSTR] = va_arg(ap, char *);
+	else if (f_blc[CONTENT] == Ep)
+		itos(s_blc[CONTENTSTR], va_arg(ap, void *), Sixteen);
+	else if (f_blc[CONTENT] == Ex)
+		itos(s_blc[CONTENTSTR], va_arg(ap, unsigned int), Sixteen);
+	else if (f_blc[CONTENT] == EX)
+		itos(s_blc[CONTENTSTR], va_arg(ap, unsigned int), SIXTEEN);
+	else if (f_blc[CONTENT] == Ed || f_blc[CONTENT] == Ei)
+		itos(s_blc[CONTENTSTR], va_arg(ap, int), Ten);
+	else if (f_blc[CONTENT] == Eu)
+		s_blc[CONTENTSTR][0] = '%';
+	else if (f_blc[CONTENT] == Eper)
+		s_blc[CONTENTSTR][0] = '%';
+	f_blc[CONTENTLEN] = ft_strlen(s_blc[CONTENTSTR]);
+
 }
