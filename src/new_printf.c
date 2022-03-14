@@ -70,7 +70,7 @@ int	ft_printf(const char	*fmt, ...)
 	return (i);
 }
 
-int	put_block(const char	*s, const char	*e, va_list	ap)
+int	block(const char	*s, const char	*e, va_list	ap)
 {
 	size_t	f_blc[B_FMT];
 	char	*s_blc[B_STR];
@@ -90,7 +90,7 @@ int	put_block(const char	*s, const char	*e, va_list	ap)
 	if (mkblc(e, s_blc, f_blc, ap))
 		return (-1);
 	if (e > s)
-		putlen = put_block(s, e - 1, ap);
+		putlen = block(s, e - 1, ap);
 	if (putlen == -1)
 		return (-1);
 	i = output(s_blc, f_blc);
