@@ -5,8 +5,9 @@ CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -I./
 SUBMIT_d	= libftprintf_submit_files
 LIBFT_GIT	= https://github.com/bodu0204/libft_o.git
-LIBFT_d		= libft_o/
-LIBFT		= libft.a
+LIBFT_d		= libft_o/#_o要らない
+LIBFT_a		= libft.a
+LIBFT_h		= libft.h
 
 all : $(NAME)
 
@@ -19,7 +20,8 @@ $(NAME) : $(OBJS)
 genlibft :
 	git clone $(LIBFT_GIT) $(LIBFT_d)
 	cd "$(PWD)/$(LIBFT_d)" && make all
-	cp $(LIBFT_d)$(LIBFT) ./
+	cp $(LIBFT_d)$(LIBFT_a) ./
+	cp $(LIBFT_d)$(LIBFT_h) ./
 
 push : fclean
 	git add .
