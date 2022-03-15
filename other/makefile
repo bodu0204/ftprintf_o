@@ -13,14 +13,17 @@ LIBFT_od	= libft_o/
 LIBFT_d		= libft/
 LIBFT_a		= libft.a
 LIBFT_h		= libft.h
+PRINTF_a	= printf.a
 
 all : $(NAME)
 
 $(NAME) : genlibft $(OBJS) $(HEADER)
-	ar rs $(NAME) $(OBJS) $(LIBFT_a)
+	ar rs $(PRINTF_a) $(OBJS)
+	ar rs $(NAME) $(PRINTF_a) $(LIBFT_a)
 
 bonus : genlibft $(OBJS_b) $(HEADER_b)
-	ar rs $(NAME) $(OBJS_b) $(LIBFT_a)
+	ar rs $(PRINTF_a) $(OBJS_b)
+	ar rs $(NAME) $(PRINTF_a) $(LIBFT_a)
 
 .c.o : $(SRC) $(SRC_b)
 	$(CC) $(CFLAGS) -c $^

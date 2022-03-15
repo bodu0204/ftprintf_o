@@ -55,6 +55,7 @@ enum
 	B_STR,
 };
 
+int		ft_printf(const char	*fmt, ...);
 int		block(const char	*s, const char	*e, va_list	ap);
 int		mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap);
 void	adjust(char	*s_blc[], size_t	*f_blc);
