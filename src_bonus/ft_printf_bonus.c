@@ -12,6 +12,7 @@ int	ft_printf(const char	*fmt, ...)
 	va_start(ap, fmt);
 	i = block(fmt, fmt + ft_strlen(fmt) - 1, ap);
 	va_end(ap);
+	/* test */printf("YES-%d\n",__LINE__); fflush(stdin);
 	return (i);
 }
 
@@ -56,6 +57,7 @@ int	block(const char	*s, const char	*e, va_list	ap)
 	i = output(s_blc, f_blc);
 	if (i == -1)
 		return (-1);
+	/* test */printf("YES-%d\n",__LINE__); fflush(stdin);
 	return (putlen + i);
 }
 
@@ -92,6 +94,7 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 		f_blc[ZERO] += f_blc[BLANK];
 		f_blc[BLANK] = 0;
 	}
+	/* test */printf("YES-%d\n",__LINE__); fflush(stdin);
 	return (0);
 }
 
@@ -158,5 +161,6 @@ int	each_len(const char	*block, size_t	*f_blc)
 	///* test */}
 	return (1);
 	}/* test */
+	/* test */printf("YES-%d\n",__LINE__); fflush(stdin);
 	return (0);
 }
