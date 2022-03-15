@@ -33,7 +33,7 @@ newlibft :
 	rm -rf $(LIBFT_od)
 
 genlibft :
-	cd "$(PWD)/$(LIBFT_d)" && make all
+	cd "$(PWD)/$(LIBFT_d)" && make bonus
 	cp $(LIBFT_d)$(LIBFT_h) ./
 
 push : fclean
