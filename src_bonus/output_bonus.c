@@ -36,15 +36,15 @@ int	output_1(char	*s_blc[], size_t	*f_blc)
 
 	if (f_blc[SING] == DEFAULT_none)
 		i = 0;
-	else if (f_blc[SING] = SPASE_spase)
+	else if (f_blc[SING] == SPASE_spase)
 		i = write(1, " ", 1);
-	else if (f_blc[SING] = PLUS_plus)
+	else if (f_blc[SING] == PLUS_plus)
 		i = write(1, "+", 1);
-	else if (f_blc[SING] = _minus)
+	else if (f_blc[SING] == _minus)
 		i = write(1, "-", 1);
-	else if (f_blc[SING] = ZEROX_0x)
+	else if (f_blc[SING] == ZEROX_0x)
 		i = write(1, "0x", 2);
-	else if (f_blc[SING] = _0X)
+	else if (f_blc[SING] == _0X)
 		i = write(1, "0X", 2);
 	if (i < 0)
 		return (-1);
