@@ -7,7 +7,6 @@ OBJS		= $(SRC:%.c=%.o)
 OBJS_b		= $(SRC_b:%.c=%.o)
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -I./
-SUBMIT_d	= libftprintf_submit_files
 LIBFT_GIT	= https://github.com/bodu0204/libft_o.git
 LIBFT_od	= libft_o/
 LIBFT_d		= libft/
@@ -42,16 +41,10 @@ push : fclean
 	git push
 
 clean :
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJS_b)
 
 fclean : clean
 	rm -f $(NAME)
-	rm -rf $(SUBMIT_d)
-	rm -rf $(LIBFT_d)
-
-outclean :
-	rm -rf ../$(SUBMIT_d)
-
-allclean : fclean outclean
+	rm -rf $(LIBFT_od)
 
 re : fclean all
