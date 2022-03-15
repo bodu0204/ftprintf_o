@@ -40,10 +40,11 @@ int	block(const char	*s, const char	*e, va_list	ap)
 		putlen = block(s, e - 1, ap);
 	if (putlen == -1)
 		return (-1);
-	/* test */for (size_t ii = 0; ii < B_FMT; ii++)
-	/* test */{
-	/* test */	printf("f_blc[%zu] = %zu\n", ii, f_blc[ii]);
-	/* test */}
+	///* test */printf("\n");
+	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
+	///* test */{
+	///* test */	printf("f_blc[%zu] = %zu, ", ii, f_blc[ii]);
+	///* test */}
 	i = output(s_blc, f_blc);
 	if (i == -1)
 		return (-1);
