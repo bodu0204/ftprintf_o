@@ -125,7 +125,6 @@ void	adjust(char	*s_blc[], size_t	*f_blc)
 
 int	each_len(const char	*block, size_t	*f_blc)
 {
-		/* test */write(1,"yes\n", 5);
 	if (*block != '%')
 		return (0);
 	f_blc[ORDERLEN]++;
