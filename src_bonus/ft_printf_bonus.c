@@ -130,10 +130,34 @@ int	each_len(const char	*block, size_t	*f_blc)
 		return (0);
 	f_blc[ORDERLEN]++;
 	if (set_sing(block, f_blc))
-		return (1);
+	{/* test */
+	/* test */printf("YES-%d\n",__LINE__);
+	///* test */printf("\n");
+	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
+	///* test */{
+	///* test */	printf("f_blc[%zu] = %zu, ", ii, f_blc[ii]);
+	///* test */}
+	return (1);
+	}/* test */
 	if (set_len(block, f_blc))
-		return (1);
+	{/* test */
+	/* test */printf("YES-%d\n",__LINE__);
+	///* test */printf("\n");
+	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
+	///* test */{
+	///* test */	printf("f_blc[%zu] = %zu, ", ii, f_blc[ii]);
+	///* test */}
+	return (1);
+	}/* test */
 	if (set_esc(block[f_blc[ORDERLEN]], f_blc[SING], f_blc[DIRECTION], f_blc))
-		return (1);
+	{/* test */
+	/* test */printf("YES-%d\n",__LINE__);
+	///* test */printf("\n");
+	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
+	///* test */{
+	///* test */	printf("f_blc[%zu] = %zu, ", ii, f_blc[ii]);
+	///* test */}
+	return (1);
+	}/* test */
 	return (0);
 }
