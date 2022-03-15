@@ -41,6 +41,7 @@ int	set_sing(const char	*block, size_t	*f_blc)
 		f_blc[SING] = SPASE_spase;
 	else
 		f_blc[SING] = DEFAULT_none;
+	/* test */printf("YES-set-%d\n",__LINE__); fflush(stdin);
 	return (0);
 }
 
@@ -68,6 +69,7 @@ int	set_len(const char	*block, size_t	*f_blc)
 	}
 	else
 		f_blc[ZERO] = 0;
+	/* test */printf("YES-set-%d\n",__LINE__); fflush(stdin);
 	return (0);
 }
 
@@ -94,6 +96,7 @@ int	set_esc(char	c, size_t	s, size_t	d, size_t	*f_blc)
 	else
 		return (1);
 	f_blc[ORDERLEN]++;
+	/* test */printf("YES-set-%d\n",__LINE__); fflush(stdin);
 	return (0);
 }
 
