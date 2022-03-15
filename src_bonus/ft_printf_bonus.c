@@ -100,8 +100,8 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 
 void	adjust(char	*s_blc[], size_t	*f_blc)
 {
-	f_blc[CONTENTLEN] = ft_strlen(s_blc[CONTENTSTR]);
 	/* test */printf("YES-%d\n",__LINE__); fflush(stdin);
+	f_blc[CONTENTLEN] = ft_strlen(s_blc[CONTENTSTR]);
 	if (f_blc[ZERO] < f_blc[CONTENTLEN])
 	{
 		if (f_blc[BLANK] + f_blc[ZERO] < f_blc[CONTENTLEN])
