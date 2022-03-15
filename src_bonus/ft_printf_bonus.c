@@ -1,4 +1,5 @@
 #include "ft_printf_bonus.h"
+# include <stdio.h>/* test */
 
 int	ft_printf(const char	*fmt, ...)
 {
@@ -23,6 +24,7 @@ int	block(const char	*s, const char	*e, va_list	ap)
 	int		putlen;
 	int		i;
 
+	printf("yes\n");
 	ft_bzero(f_blc, sizeof(f_blc));
 	putlen = 0;
 	s_blc[CONTENTSTR] = con;
