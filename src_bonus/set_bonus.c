@@ -27,7 +27,6 @@ int	set_sing(const char	*block, size_t	*f_blc)
 	///* test */}
 	return (1);
 	}/* test */
-		/* test */write(1,"yes\n", 5);
 	if (i[0])
 		f_blc[DIRECTION] = _left;
 	else if (i[1])
@@ -42,6 +41,7 @@ int	set_sing(const char	*block, size_t	*f_blc)
 		f_blc[SING] = SPASE_spase;
 	else
 		f_blc[SING] = DEFAULT_none;
+		/* test */write(1,"yes\n", 5);
 	return (0);
 }
 
