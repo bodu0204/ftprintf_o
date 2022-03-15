@@ -8,25 +8,9 @@ int	set_sing(const char	*block, size_t	*f_blc)
 	ft_bzero(i, sizeof(i));
 	read_sing(block, f_blc, i);
 	if (i[0] * i[1])
-	{/* test */
-	/* test */printf("YES-set-%d\n",__LINE__); fflush(stdin);
-	///* test */printf("\n");
-	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
-	///* test */{
-	///* test */	printf("f_blc[%zu] = %zu, ", ii, f_blc[ii]);
-	///* test */}
-	return (1);
-	}/* test */
+		return (1);
 	if (i[2] * i[3] || i[3] * i[4] || i[4] * i[2])
-	{/* test */
-	/* test */printf("YES-set-%d\n",__LINE__); fflush(stdin);
-	///* test */printf("\n");
-	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
-	///* test */{
-	///* test */	printf("f_blc[%zu] = %zu, ", ii, f_blc[ii]);
-	///* test */}
-	return (1);
-	}/* test */
+		return (1);
 	if (i[0])
 		f_blc[DIRECTION] = _left;
 	else if (i[1])
@@ -41,7 +25,6 @@ int	set_sing(const char	*block, size_t	*f_blc)
 		f_blc[SING] = SPASE_spase;
 	else
 		f_blc[SING] = DEFAULT_none;
-	/* test */printf("YES-set-%d\n",__LINE__); fflush(stdin);
 	return (0);
 }
 
@@ -69,7 +52,6 @@ int	set_len(const char	*block, size_t	*f_blc)
 	}
 	else
 		f_blc[ZERO] = 0;
-	/* test */printf("YES-set-%d\n",__LINE__); fflush(stdin);
 	return (0);
 }
 
@@ -96,7 +78,6 @@ int	set_esc(char	c, size_t	s, size_t	d, size_t	*f_blc)
 	else
 		return (1);
 	f_blc[ORDERLEN]++;
-	/* test */printf("YES-set-%d\n",__LINE__); fflush(stdin);
 	return (0);
 }
 

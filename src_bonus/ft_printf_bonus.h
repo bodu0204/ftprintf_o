@@ -3,7 +3,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include "libft.h"
-# include <stdio.h>/* test */
+#include "debug.h"/* test */
 #define BUFFER 32
 
 enum

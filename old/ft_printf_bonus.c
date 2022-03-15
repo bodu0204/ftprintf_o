@@ -12,7 +12,6 @@ int	ft_printf(const char	*fmt, ...)
 	va_start(ap, fmt);
 	i = block(fmt, fmt + ft_strlen(fmt) - 1, ap);
 	va_end(ap);
-	/* test */printf("YES-%d\n",__LINE__); fflush(stdin);
 	return (i);
 }
 
