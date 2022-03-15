@@ -9,7 +9,7 @@ int	set_sing(const char	*block, size_t	*f_blc)
 	read_sing(block, f_blc, i);
 	if (i[0] * i[1])
 	{/* test */
-	/* test */printf("YES-set-%d\n",__LINE__);
+	/* test */printf("YES-set-%d\n",__LINE__); fflush(stdin);
 	///* test */printf("\n");
 	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
 	///* test */{
@@ -19,7 +19,7 @@ int	set_sing(const char	*block, size_t	*f_blc)
 	}/* test */
 	if (i[2] * i[3] || i[3] * i[4] || i[4] * i[2])
 	{/* test */
-	/* test */printf("YES-set-%d\n",__LINE__);
+	/* test */printf("YES-set-%d\n",__LINE__); fflush(stdin);
 	///* test */printf("\n");
 	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
 	///* test */{
@@ -41,7 +41,6 @@ int	set_sing(const char	*block, size_t	*f_blc)
 		f_blc[SING] = SPASE_spase;
 	else
 		f_blc[SING] = DEFAULT_none;
-		/* test */write(1,"yes\n", 5);
 	return (0);
 }
 
