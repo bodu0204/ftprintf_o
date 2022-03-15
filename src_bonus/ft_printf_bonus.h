@@ -36,6 +36,7 @@ enum
 
 enum
 {
+	Enone,
 	Ec,
 	Es,
 	Ep,
@@ -45,7 +46,6 @@ enum
 	Ex,
 	EX,
 	Eper,
-	Enone,
 };
 
 enum
