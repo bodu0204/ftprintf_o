@@ -24,7 +24,7 @@ int	block(const char	*s, const char	*e, va_list	ap)
 	int		putlen;
 	int		i;
 
-	/* test */printf("YES%d\n"__LINE__);
+	/* test */printf("YES%d\n",__LINE__);
 	ft_bzero(f_blc, sizeof(f_blc));
 	putlen = 0;
 	ft_bzero(con, sizeof(con));
