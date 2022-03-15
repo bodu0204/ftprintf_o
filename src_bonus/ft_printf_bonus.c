@@ -24,7 +24,7 @@ int	block(const char	*s, const char	*e, va_list	ap)
 	int		putlen;
 	int		i;
 
-	/* test */printf("YES%d\n",__LINE__);
+	///* test */printf("YES-%d\n",__LINE__);
 	ft_bzero(f_blc, sizeof(f_blc));
 	putlen = 0;
 	ft_bzero(con, sizeof(con));
@@ -36,7 +36,15 @@ int	block(const char	*s, const char	*e, va_list	ap)
 	}
 	f_blc[BLOCKLEN]++;
 	if (mkblc(e, s_blc, f_blc, ap))
-		return (-1);
+	{/* test */
+	/* test */printf("YES-%d\n",__LINE__);
+	///* test */printf("\n");
+	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
+	///* test */{
+	///* test */	printf("f_blc[%zu] = %zu, ", ii, f_blc[ii]);
+	///* test */}
+	return (1);
+	}/* test */
 	if (e > s)
 		putlen = block(s, e - 1, ap);
 	if (putlen == -1)
@@ -55,14 +63,14 @@ int	block(const char	*s, const char	*e, va_list	ap)
 int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 {
 	if (each_len(blc, f_blc))
-	{
+	{/* test */
 	///* test */printf("\n");
 	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
 	///* test */{
 	///* test */	printf("f_blc[%zu] = %zu, ", ii, f_blc[ii]);
 	///* test */}
 	return (1);
-	}
+	}/* test */
 	s_blc[FMTSTR] = (char *)blc + f_blc[ORDERLEN];
 	if (f_blc[CONTENT] == Ec)
 		s_blc[CONTENTSTR][0] = va_arg(ap, int);
