@@ -1,4 +1,5 @@
-NAME		= libftprintf.a
+PROJECT_NAME= libftprintf
+NAME		= $(PROJECT_NAME).a
 SRC_PASS	= src/
 OTHER_PASS	= other/
 OBJS		= $(SRC:%.c=%.o)
@@ -33,8 +34,8 @@ submitfile : push clonelibft
 	mv $(LIBFT_d) $(SUBMIT_d)
 
 submit : outclean submitfile
-	mv $(SUBMIT_d) ../
-	mv ../$(SUBMIT_d) libftprintf
+	mv $(SUBMIT_d) $(PROJECT_NAME)
+	mv $(PROJECT_NAME) ../
 
 submit42 : push outclean submitfile
 	git clone $(SUBMIT_42) $(SUBMIT_42d)
