@@ -1,5 +1,4 @@
 #include "ft_printf_bonus.h"
-# include <stdio.h>/* test */
 
 int	ft_printf(const char	*fmt, ...)
 {

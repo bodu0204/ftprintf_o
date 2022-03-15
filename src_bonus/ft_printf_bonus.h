@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include "libft.h"
+# include <stdio.h>/* test */
 
 enum
 {
