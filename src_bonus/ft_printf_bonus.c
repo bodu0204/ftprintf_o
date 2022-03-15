@@ -24,6 +24,7 @@ int	block(const char	*s, const char	*e, va_list	ap)
 	int		putlen;
 	int		i;
 
+	/* test */printf("YES\n");
 	ft_bzero(f_blc, sizeof(f_blc));
 	putlen = 0;
 	ft_bzero(con, sizeof(con));
@@ -55,11 +56,11 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 {
 	if (each_len(blc, f_blc))
 	{
-	/* test */printf("\n");
-	/* test */for (size_t ii = 0; ii < B_FMT; ii++)
-	/* test */{
-	/* test */	printf("f_blc[%zu] = %zu, ", ii, f_blc[ii]);
-	/* test */}
+	///* test */printf("\n");
+	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
+	///* test */{
+	///* test */	printf("f_blc[%zu] = %zu, ", ii, f_blc[ii]);
+	///* test */}
 	return (1);
 	}
 	s_blc[FMTSTR] = (char *)blc + f_blc[ORDERLEN];
