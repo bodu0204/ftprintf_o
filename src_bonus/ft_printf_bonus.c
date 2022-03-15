@@ -26,6 +26,7 @@ int	block(const char	*s, const char	*e, va_list	ap)
 
 	ft_bzero(f_blc, sizeof(f_blc));
 	putlen = 0;
+	ft_bzero(con, sizeof(con));
 	s_blc[CONTENTSTR] = con;
 	while (e > s && *e != '%')
 	{
