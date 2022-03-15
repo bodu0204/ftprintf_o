@@ -62,7 +62,7 @@ submit42 : push outclean submitfile
 
 test0 : bonus
 	cp $(TESTER_PASS)$(TESTER_0) ./
-	$(CC) $(CFLAGS) $(TESTER_0) $(NAME) -o $(test_case_0.a)
+	$(CC) $(CFLAGS) $(TESTER_0) $(NAME) -o $(TEST0)
 	rm -f $(TESTER_0)
 
 fclean :
