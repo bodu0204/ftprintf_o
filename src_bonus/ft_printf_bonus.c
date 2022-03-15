@@ -33,10 +33,10 @@ int	block(const char	*s, const char	*e, va_list	ap)
 		e--;
 		f_blc[BLOCKLEN]++;
 	}
-	write(1,"yes\n", 5);
 	f_blc[BLOCKLEN]++;
 	if (mkblc(e, s_blc, f_blc, ap))
 	{/* test */
+	/* test */write(1,"yes\n", 5);
 	/* test */printf("YES-%d\n",__LINE__);
 	///* test */printf("\n");
 	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
