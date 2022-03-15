@@ -5,7 +5,9 @@ int	set_sing(const char	*block, size_t	*f_blc)
 {
 	size_t	i[5];
 
+	write(1,"b\n", 1);
 	ft_bzero(i, sizeof(i));
+	write(1,"a\n", 1);
 	read_sing(block, f_blc, i);
 	if (i[0] * i[1])
 	{/* test */
