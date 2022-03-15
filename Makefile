@@ -34,6 +34,7 @@ submitfile : push clonelibft
 
 submit : outclean submitfile
 	mv $(SUBMIT_d) ../
+	mv ../$(SUBMIT_d) libftprintf
 
 submit42 : push outclean submitfile
 	git clone $(SUBMIT_42) $(SUBMIT_42d)
