@@ -89,7 +89,6 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 	else if (f_blc[CONTENT] == Eper)
 		s_blc[CONTENTSTR][0] = '%';
 	adjust(s_blc, f_blc);
-	/* test */printf("YES-%d\n",__LINE__); fflush(stdin);
 	if (f_blc[DIRECTION] == ZERO_right)
 	{
 		f_blc[ZERO] += f_blc[BLANK];
@@ -101,6 +100,7 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 
 void	adjust(char	*s_blc[], size_t	*f_blc)
 {
+	/* test */printf("YES-%d\n",__LINE__); fflush(stdin);
 	f_blc[CONTENTLEN] = ft_strlen(s_blc[CONTENTSTR]);
 	if (f_blc[ZERO] < f_blc[CONTENTLEN])
 	{
