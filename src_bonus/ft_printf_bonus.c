@@ -24,7 +24,6 @@ int	block(const char	*s, const char	*e, va_list	ap)
 	int		putlen;
 	int		i;
 
-	printf("yes\n");
 	ft_bzero(f_blc, sizeof(f_blc));
 	putlen = 0;
 	s_blc[CONTENTSTR] = con;
@@ -40,6 +39,10 @@ int	block(const char	*s, const char	*e, va_list	ap)
 		putlen = block(s, e - 1, ap);
 	if (putlen == -1)
 		return (-1);
+	/* test */for (size_t ii = 0; ii < B_FMT; ii++)
+	/* test */{
+	/* test */	printf("f_blc[%d] = %lu\n", ii, f_blc[ii]);
+	/* test */}
 	i = output(s_blc, f_blc);
 	if (i == -1)
 		return (-1);
