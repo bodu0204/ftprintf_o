@@ -100,6 +100,7 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 
 void	adjust(char	*s_blc[], size_t	*f_blc)
 {
+	/* test */printf("YES-%d\n",__LINE__); fflush(stdin);
 	f_blc[CONTENTLEN] = ft_strlen(s_blc[CONTENTSTR]);
 	if (f_blc[ZERO] < f_blc[CONTENTLEN])
 	{
@@ -117,7 +118,6 @@ void	adjust(char	*s_blc[], size_t	*f_blc)
 		strupper(s_blc[CONTENTSTR]);
 	if (f_blc[CONTENT] == EX && f_blc[SING] == ZEROX_0x)
 		f_blc[SING] = _0X;
-	/* test */printf("YES-%d\n",__LINE__); fflush(stdin);
 	if (f_blc[CONTENT] == Ex && !ft_memcmp(s_blc[CONTENTSTR], "0", 2))
 		f_blc[SING] = DEFAULT_none;
 	if (f_blc[CONTENT] == EX && !ft_memcmp(s_blc[CONTENTSTR], "0", 2))
