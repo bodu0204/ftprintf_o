@@ -18,12 +18,10 @@ PRINTF_a	= printf.a
 all : $(NAME)
 
 $(NAME) : genlibft $(OBJS) $(HEADER)
-	ar rs $(PRINTF_a) $(OBJS)
-	ar rs $(NAME) $(PRINTF_a) $(LIBFT_a)
+	ar rs $(NAME) $(OBJS) $(LIBFT_d)*.o
 
 bonus : genlibft $(OBJS_b) $(HEADER_b)
-	ar rs $(PRINTF_a) $(OBJS_b)
-	ar rs $(NAME) $(PRINTF_a) $(LIBFT_a)
+	ar rs $(NAME) $(OBJS_b) $(LIBFT_d)*.o
 
 .c.o : $(SRC) $(SRC_b)
 	$(CC) $(CFLAGS) -c $^
@@ -36,7 +34,6 @@ newlibft :
 
 genlibft :
 	cd "$(PWD)/$(LIBFT_d)" && make all
-	cp $(LIBFT_d)$(LIBFT_a) ./
 	cp $(LIBFT_d)$(LIBFT_h) ./
 
 push : fclean
