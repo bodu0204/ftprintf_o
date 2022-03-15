@@ -1,29 +1,4 @@
-#include <stdarg.h>
-#include <unistd.h>
-#include "libft.h"
-
-enum
-{
-	DIRECTION,
-	BLANK,
-	SING,
-	ZERO,
-	CONTENT,
-	CONTENTLEN,
-	ORDERLEN,
-	BLOCKLEN,
-	B_FMT,
-};
-
-enum
-{
-	DEFAULT_none,
-	SPASE_spase,
-	PLUS_plus,
-	_minus,
-	ZEROX_0x,
-	_0X,
-};
+#include "ft_printf.h"
 
 void	itosx(char	*str, unsigned long int	n)
 {
