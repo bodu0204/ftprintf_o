@@ -45,6 +45,8 @@ int	output_1(char	*s_blc[], size_t	*f_blc)
 		i = write(1, "0x", 2);
 	else if (f_blc[SING] == _0X)
 		i = write(1, "0X", 2);
+	else
+		return (1);
 	if (i < 0)
 		return (-1);
 	len = i;
