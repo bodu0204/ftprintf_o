@@ -41,7 +41,7 @@ int	block(const char	*s, const char	*e, va_list	ap)
 		return (-1);
 	/* test */for (size_t ii = 0; ii < B_FMT; ii++)
 	/* test */{
-	/* test */	printf("f_blc[zu] = %zu\n", ii, f_blc[ii]);
+	/* test */	printf("f_blc[%zu] = %zu\n", ii, f_blc[ii]);
 	/* test */}
 	i = output(s_blc, f_blc);
 	if (i == -1)
