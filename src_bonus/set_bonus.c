@@ -6,8 +6,8 @@ int	set_sing(const char	*block, size_t	*f_blc)
 	size_t	i[5];
 
 	ft_bzero(i, sizeof(i));
-		/* test */write(1,"yes\n", 5);
 	read_sing(block, f_blc, i);
+		/* test */write(1,"yes\n", 5);
 	if (i[0] * i[1])
 	{/* test */
 	/* test */printf("YES-set-%d\n",__LINE__);
