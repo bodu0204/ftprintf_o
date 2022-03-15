@@ -63,8 +63,6 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 {
 	if (each_len(blc, f_blc))
 	{/* test */
-		/* test */write(1,"yes\n", 5);
-
 	/* test */printf("YES-%d\n",__LINE__);
 	///* test */printf("\n");
 	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
@@ -132,6 +130,7 @@ int	each_len(const char	*block, size_t	*f_blc)
 	f_blc[ORDERLEN]++;
 	if (set_sing(block, f_blc))
 	{/* test */
+		/* test */write(1,"yes\n", 5);
 	/* test */printf("YES-%d\n",__LINE__);
 	///* test */printf("\n");
 	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
