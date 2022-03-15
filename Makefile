@@ -11,12 +11,22 @@ SUBMIT_d		= $(PROJECT_NAME)
 LIBFT_GIT		= https://github.com/bodu0204/libft_o.git
 LIBFT_od		= libft_o/
 LIBFT_d			= libft/
-TESTER			= https://github.com/Tripouille/printfTester.git
+TESTER_PASS		= tester/
+TESTER_0		= test.c
+TEST0			= test_case_0.a
+TESTER_1_GIT	= https://github.com/Tripouille/printfTester.git
+CC				= gcc
+CFLAGS			= -Wall -Wextra -Werror -I./
 
 all : $(NAME)
 
 $(NAME) : submitfile
 	cd "$(PWD)/$(SUBMIT_d)" && make all
+	mv $(SUBMIT_d)$(NAME) ./
+	mv $(SUBMIT_d)$(NAME_h) ./
+
+bonus : submitfile
+	cd "$(PWD)/$(SUBMIT_d)" && make bonus
 	mv $(SUBMIT_d)$(NAME) ./
 	mv $(SUBMIT_d)$(NAME_h) ./
 
@@ -49,6 +59,11 @@ submit42 : push outclean submitfile
 	cd "$(PWD)/$(SUBMIT_42d)" && make push
 	mv $(SUBMIT_42d) $(SUBMIT_d)
 	mv $(SUBMIT_d) ../
+
+test0 : bonus
+	cp $(TESTER_PASS)$(TESTER_0) ./
+	$(CC)$(CFLAGS) $(TESTER_0) $(NAME) -o $(test_case_0.a)
+	rm -f $(TESTER_0)
 
 fclean :
 	rm -f $(NAME)
