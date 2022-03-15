@@ -54,7 +54,7 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 	else if (f_blc[CONTENT] == Es)
 		s_blc[CONTENTSTR] = va_arg(ap, char *);
 	else if (f_blc[CONTENT] == Ep)
-		itosx(s_blc[CONTENTSTR], va_arg(ap, void *));
+		itosx(s_blc[CONTENTSTR], (unsigned long int)va_arg(ap, void *));
 	else if (f_blc[CONTENT] == Ex || f_blc[CONTENT] == EX)
 		itosx(s_blc[CONTENTSTR], va_arg(ap, unsigned int));
 	else if (f_blc[CONTENT] == Ed || f_blc[CONTENT] == Ei)
