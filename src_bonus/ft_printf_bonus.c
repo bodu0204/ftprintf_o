@@ -24,7 +24,7 @@ int	block(const char	*s, const char	*e, va_list	ap)
 	int		putlen;
 	int		i;
 
-	///* test */printf("YES-%d\n",__LINE__);
+	/* test */printf("YES-%d\n",__LINE__);
 	ft_bzero(f_blc, sizeof(f_blc));
 	putlen = 0;
 	ft_bzero(con, sizeof(con));
@@ -64,6 +64,7 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 {
 	if (each_len(blc, f_blc))
 	{/* test */
+	/* test */printf("YES-%d\n",__LINE__);
 	///* test */printf("\n");
 	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
 	///* test */{
