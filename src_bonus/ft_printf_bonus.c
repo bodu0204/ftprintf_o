@@ -50,7 +50,7 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 		return (1);
 	s_blc[FMTSTR] = (char *)blc + f_blc[ORDERLEN];
 	if (f_blc[CONTENT] == Ec)
-		s_blc[CONTENTSTR][0] = va_arg(ap, char);
+		s_blc[CONTENTSTR][0] = va_arg(ap, int);
 	else if (f_blc[CONTENT] == Es)
 		s_blc[CONTENTSTR] = va_arg(ap, char *);
 	else if (f_blc[CONTENT] == Ep)
