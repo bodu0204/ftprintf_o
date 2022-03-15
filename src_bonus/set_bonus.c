@@ -7,7 +7,6 @@ int	set_sing(const char	*block, size_t	*f_blc)
 
 	ft_bzero(i, sizeof(i));
 	read_sing(block, f_blc, i);
-		/* test */write(1,"yes\n", 5);
 	if (i[0] * i[1])
 	{/* test */
 	/* test */printf("YES-set-%d\n",__LINE__);
@@ -28,6 +27,7 @@ int	set_sing(const char	*block, size_t	*f_blc)
 	///* test */}
 	return (1);
 	}/* test */
+		/* test */write(1,"yes\n", 5);
 	if (i[0])
 		f_blc[DIRECTION] = _left;
 	else if (i[1])
