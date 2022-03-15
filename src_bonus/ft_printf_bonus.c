@@ -10,7 +10,7 @@ int	ft_printf(const char	*fmt, ...)
 	if (!*fmt)
 		return (0);
 	va_start(ap, fmt);
-	i = put_block(fmt, fmt + ft_strlen(fmt) - 1, ap);
+	i = block(fmt, fmt + ft_strlen(fmt) - 1, ap);
 	va_end(ap);
 	return (i);
 }
