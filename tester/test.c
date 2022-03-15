@@ -10,7 +10,7 @@ int main (void)
 	printf("\nreturn = %d\n", i);
 	printf("\n");
 	printf("your\n");
-	i = ft_printf("apple, %%d = %d, %%s = %s\n", "test", 63);/*  */
+	i = ft_printf("apple, %%d = %d, %%s = %d\n", 52, 63);/*  */
 	printf("\nreturn = %d\n", i);
 	return (0);
 }
