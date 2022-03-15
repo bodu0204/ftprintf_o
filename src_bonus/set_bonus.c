@@ -3,10 +3,10 @@ void	read_sing(const char	*block, size_t	*f_blc, size_t	*i);
 
 int	set_sing(const char	*block, size_t	*f_blc)
 {
-		/* test */write(1,"yes\n", 5);
 	size_t	i[5];
 
 	ft_bzero(i, sizeof(i));
+		/* test */write(1,"yes\n", 5);
 	read_sing(block, f_blc, i);
 	if (i[0] * i[1])
 	{/* test */
