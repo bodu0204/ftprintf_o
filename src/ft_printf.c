@@ -10,7 +10,7 @@ int	ft_printf(const char	*fmt, ...)
 	if (!*fmt)
 		return (0);
 	va_start(ap, fmt);
-	i = put_block(fmt, fmt + ft_strlen(fmt) - 1, ap);
+	i = block(fmt, fmt + ft_strlen(fmt) - 1, ap);
 	va_end(ap);
 	return (i);
 }
@@ -48,7 +48,7 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 {
 	if (each_len(blc, f_blc))
 		return (1);
-	s_blc[FMTSTR] = blc + f_blc[ORDERLEN];
+	s_blc[FMTSTR] = (char *)blc + f_blc[ORDERLEN];
 	if (f_blc[CONTENT] == Ec)
 		s_blc[CONTENTSTR][0] = va_arg(ap, char);
 	else if (f_blc[CONTENT] == Es)
