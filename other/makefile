@@ -1,6 +1,10 @@
 NAME		= libftprintf.a
-SRC			= ft_printf.c
+SRC			= ft_printf.c itos.c output.c set.c
+HEADER		= ft_printf.h
+SRC_b		= ft_printf_bonus.c itos_bonus.c output_bonus.c set_bonus.c
+HEADER_b	= ft_printf_bonus.h
 OBJS		= $(SRC:%.c=%.o)
+OBJS_b		= $(SRC_b:%.c=%.o)
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -I./
 SUBMIT_d	= libftprintf_submit_files
@@ -12,10 +16,13 @@ LIBFT_h		= libft.h
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	ar rs $(NAME) $^
+$(NAME) : genlibft $(OBJS) $(HEADER)
+	ar rs $(NAME) $(OBJS) $(LIBFT_a)
 
-.c.o : $(SRC)
+bonus : genlibft $(OBJS_b) $(HEADER_b)
+	ar rs $(NAME) $(OBJS_b) $(LIBFT_a)
+
+.c.o : $(SRC) $(SRC_b)
 	$(CC) $(CFLAGS) -c $^
 
 newlibft :
