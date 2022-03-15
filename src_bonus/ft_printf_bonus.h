@@ -65,7 +65,7 @@ typedef struct s_block
 	size_t	zero;
 	char	*nums;
 	size_t	numl;
-	int		type;
+	char	type;
 	char	*fmts;
 	size_t	fmtl;
 	size_t	odrl;
