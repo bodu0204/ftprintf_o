@@ -125,12 +125,12 @@ void	adjust(char	*s_blc[], size_t	*f_blc)
 
 int	each_len(const char	*block, size_t	*f_blc)
 {
+		/* test */write(1,"yes\n", 5);
 	if (*block != '%')
 		return (0);
 	f_blc[ORDERLEN]++;
 	if (set_sing(block, f_blc))
 	{/* test */
-		/* test */write(1,"yes\n", 5);
 	/* test */printf("YES-%d\n",__LINE__);
 	///* test */printf("\n");
 	///* test */for (size_t ii = 0; ii < B_FMT; ii++)
