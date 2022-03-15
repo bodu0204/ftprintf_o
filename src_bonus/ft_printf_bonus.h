@@ -66,5 +66,6 @@ int		output(char	*s_blc[], size_t	*f_blc);
 int		set_sing(const char	*block, size_t	*f_blc);
 int		set_len(const char	*block, size_t	*f_blc);
 int		set_esc(char	c, size_t	s, size_t	d, size_t	*f_blc);
+void	strupper(char	*s);
 #define BUFFER 32
 #endif

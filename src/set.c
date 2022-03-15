@@ -99,3 +99,13 @@ void	read_sing(const char	*block, size_t	*f_blc, size_t	*i)
 		f_blc[ORDERLEN]++;
 	}
 }
+
+void	strupper(char	*s)
+{
+	while(*s)
+	{
+		*s = ft_toupper(*s);
+		s++;
+	}
+	return ;
+}

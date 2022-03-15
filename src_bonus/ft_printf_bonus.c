@@ -88,7 +88,7 @@ void	adjust(char	*s_blc[], size_t	*f_blc)
 	if (f_blc[CONTENT] == Ep)
 		f_blc[SING] = ZEROX_0x;
 	if (f_blc[CONTENT] == EX)
-		ft_toupper(s_blc[CONTENTSTR]);
+		strupper(s_blc[CONTENTSTR]);
 	if (f_blc[CONTENT] == EX && f_blc[SING] == ZEROX_0x)
 		f_blc[SING] = _0X;
 	if (f_blc[CONTENT] == Ex && !ft_memcmp(s_blc[CONTENTSTR], "0", 2))
