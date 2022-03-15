@@ -34,7 +34,7 @@ int	output_1(char	*s_blc[], size_t	*f_blc)
 	int		len;
 	char	*s;
 
-	if (f_blc[SING] = DEFAULT_none)
+	if (f_blc[SING] == DEFAULT_none)
 		i = 0;
 	else if (f_blc[SING] = SPASE_spase)
 		i = write(1, " ", 1);
