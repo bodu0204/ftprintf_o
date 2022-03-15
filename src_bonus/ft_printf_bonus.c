@@ -42,7 +42,7 @@ int	block(const char	*s, const char	*e, va_list	ap)
 	///* test */{
 	///* test */	printf("f_blc[%zu] = %zu, ", ii, f_blc[ii]);
 	///* test */}
-	return (1);
+	return (-1);
 	}/* test */
 	if (e > s)
 		putlen = block(s, e - 1, ap);
