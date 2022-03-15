@@ -88,6 +88,7 @@ int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
 		itosu(s_blc[CONTENTSTR], va_arg(ap, unsigned int));
 	else if (f_blc[CONTENT] == Eper)
 		s_blc[CONTENTSTR][0] = '%';
+	/* test */printf("YES-%d\n",__LINE__); fflush(stdin);
 	adjust(s_blc, f_blc);
 	if (f_blc[DIRECTION] == ZERO_right)
 	{
