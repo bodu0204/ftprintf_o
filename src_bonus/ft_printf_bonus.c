@@ -35,7 +35,7 @@ char*	block(const char	*fmt, size_t	len, va_list	ap)
 	}
 	ft_bzero(&b, sizeof(t_block));
 	b.nums = b.buf;
-	b.fmts = fmt;
+	b.fmts = (char *)fmt;
 	if(mkblc(&b, ap))
 		return (NULL);
 	s = block(b.fmts + b.fmtl, len + blclen(&b), ap);
