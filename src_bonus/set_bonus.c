@@ -43,7 +43,7 @@ int	set_len(t_block	*b)
 		b->fmts++;
 	if (i != b->fmts && *(b->fmts) == 'c')
 		return (1);
-	if (*(b->fmts) != 's' || *(b->fmts) != '%')
+	if (*(b->fmts) != 's' && *(b->fmts) != '%')
 	{TEST
 		if (b->spase < b->zero)
 			b->spase = 0;
