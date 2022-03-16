@@ -44,14 +44,14 @@ int	set_len(t_block	*b)
 	if (i != b->fmts && *(b->fmts) == 'c')
 		return (1);
 	if (*(b->fmts) != 's' && *(b->fmts) != '%')
-	{TEST
+	{
 		if (b->spase < b->zero)
 			b->spase = 0;
 		else
 			b->spase -= b->zero;
 	}
 	else
-		{TEST b->zero = 0;}
+		b->zero = 0;
 	return (0);
 }
 
