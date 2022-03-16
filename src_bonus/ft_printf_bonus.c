@@ -27,7 +27,6 @@ char*	block(const char	*fmt, size_t	len, va_list	ap)
 	t_block	b;
 	char	*s;
 
-	TEST
 	if(!*fmt)
 	{
 		s = malloc(len + 1);
@@ -47,10 +46,8 @@ char*	block(const char	*fmt, size_t	len, va_list	ap)
 
 int	mkblc(t_block	*b, va_list	ap)
 {
-TEST
 	if (each_len(b))
 		return (1);
-	printf("type = %c\n", b->type);	TEST
 	if (b->type == 'c')
 		b->nums[0] = va_arg(ap, int);
 	else if (b->type == 's')
@@ -64,10 +61,7 @@ TEST
 	else if (b->type == 'u')
 		itosu(b->nums, va_arg(ap, unsigned int));
 	else if (b->type == '%')
-	{TEST
 		b->nums[0] = '%';
-	}/* test */
-	TEST
 	adjust(b);
 	if (b->direct == ZERO_right)
 	{
