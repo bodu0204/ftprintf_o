@@ -24,7 +24,7 @@ int	set_sing(t_block	*b)
 	else if (i[4])
 		ft_strlcpy(b->sing, " ", 3);
 	else
-		t_bzero(b->sing, 3);
+		ft_bzero(b->sing, 3);
 	return (0);
 }
 
