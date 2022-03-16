@@ -15,6 +15,8 @@ TESTER_PASS		= tester/
 TESTER_0		= test.c
 TEST0			= test_case_0.a
 TESTER_1_GIT	= https://github.com/Tripouille/printfTester.git
+TESTER_1		= tester_1
+TEST1			= test_case_1/
 CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror -I./
 
@@ -65,8 +67,14 @@ test0 : bonus
 	$(CC) $(CFLAGS) $(TESTER_0) $(NAME) -o $(TEST0)
 	rm -f $(TESTER_0)
 
+test1 : submitfile
+	git clone $(TESTER_1_GIT) $(TESTER_1)
+	cp -rf $(SUBMIT_d) $(TEST1)
+	mv $(TESTER_1) $(TEST1)
+
 fclean :
 	rm -f $(NAME)
+	rm -f $(TEST0)
 	rm -rf $(SUBMIT_d)
 	rm -rf $(SUBMIT_42d)
 	rm -rf $(LIBFT_d)

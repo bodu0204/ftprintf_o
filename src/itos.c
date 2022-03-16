@@ -52,7 +52,7 @@ void	itosu(char	*str, unsigned int	n)
 	return ;
 }
 
-void	itosd(char	*str, int	n, size_t	*f_blc)
+void	itosd(char	*str, int	n, char	*sig)
 {
 	int	nn;
 
@@ -62,7 +62,7 @@ void	itosd(char	*str, int	n, size_t	*f_blc)
 		return ;
 	}
 	if (n < 0)
-		f_blc[SING] = _minus;
+		ft_strlcpy(sig, "-", 2);
 	else
 		n *= -1;
 	nn = 1;

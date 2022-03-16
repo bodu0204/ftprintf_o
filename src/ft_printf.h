@@ -1,31 +1,10 @@
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
-#include <stdarg.h>
-#include <unistd.h>
-#include "libft.h"
-
-enum
-{
-	DIRECTION,
-	BLANK,
-	SING,
-	ZERO,
-	CONTENT,
-	CONTENTLEN,
-	ORDERLEN,
-	BLOCKLEN,
-	B_FMT,
-};
-
-enum
-{
-	DEFAULT_none,
-	SPASE_spase,
-	PLUS_plus,
-	_minus,
-	ZEROX_0x,
-	_0X,
-};
+# define FT_PRINTF_H
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft.h"
+# define BUFFER 32
 
 enum
 {
@@ -34,37 +13,32 @@ enum
 	_left,
 };
 
-enum
+typedef struct s_block
 {
-	Ec,
-	Es,
-	Ep,
-	Ed,
-	Ei,
-	Eu,
-	Ex,
-	EX,
-	Eper,
-	Enone,
-};
+	int		direct;
+	size_t	spase;
+	char	sing[3];
+	size_t	zero;
+	char	*nums;
+	size_t	numl;
+	char	type;
+	char	*fmts;
+	size_t	fmtl;
+	char	buf[BUFFER];
+}	t_block;
 
-enum
-{
-	FMTSTR,
-	CONTENTSTR,
-	B_STR,
-};
-
-int		block(const char	*s, const char	*e, va_list	ap);
-int		mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap);
-void	adjust(char	*s_blc[], size_t	*f_blc);
-int		each_len(const char	*block, size_t	*f_blc);
+char	*block(const char	*fmt, size_t	len, va_list	ap);
+int		mkblc(t_block	*b, va_list	ap);
+int		each_len(t_block	*b);
+void	adjust(t_block	*b);
+int		set_sing(t_block	*b);
+int		set_len(t_block	*b);
+int		set_type(t_block	*b);
 void	itosx(char	*str, unsigned long int	n);
 void	itosu(char	*str, unsigned int	n);
-void	itosd(char	*str, int	n, size_t	*f_blc);
-int		output(char	*s_blc[], size_t	*f_blc);
-int		set_sing(const char	*block, size_t	*f_blc);
-int		set_len(const char	*block, size_t	*f_blc);
-int		set_esc(char	c, size_t	s, size_t	d, size_t	*f_blc);
-#define BUFFER 32
+void	itosd(char	*str, int	n, char	*sig);
+void	mkput(char	*buf, t_block	*b);
+size_t	blclen(t_block	*b);
+void	strupper(char	*s);
+size_t	charset(char	*buf, char	c, size_t	l);
 #endif

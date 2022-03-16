@@ -3,107 +3,118 @@
 int	ft_printf(const char	*fmt, ...)
 {
 	va_list	ap;
-	int		i;
+	int		rtn;
+	char	*str;
 
 	if (!fmt)
 		return (-1);
 	if (!*fmt)
 		return (0);
+	rtn = -1;
 	va_start(ap, fmt);
-	i = block(fmt, fmt + ft_strlen(fmt) - 1, ap);
+	str = block(fmt, 0, ap);
 	va_end(ap);
-	return (i);
-}
-
-int	block(const char	*s, const char	*e, va_list	ap)
-{
-	size_t	f_blc[B_FMT];
-	char	*s_blc[B_STR];
-	char	con[BUFFER];
-	int		putlen;
-	int		i;
-
-	ft_bzero(f_blc, sizeof(f_blc));
-	putlen = 0;
-	s_blc[CONTENTSTR] = con;
-	while (e > s && *e != '%')
+	if (str)
 	{
-		e--;
-		f_blc[BLOCKLEN]++;
+		rtn = write(1, str, ft_strlen(str));
+		free(str);
 	}
-	f_blc[BLOCKLEN]++;
-	if (mkblc(e, s_blc, f_blc, ap))
-		return (-1);
-	if (e > s)
-		putlen = block(s, e - 1, ap);
-	if (putlen == -1)
-		return (-1);
-	i = output(s_blc, f_blc);
-	if (i == -1)
-		return (-1);
-	return (putlen + i);
+	return (rtn);
 }
 
-int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
+char	*block(const char	*fmt, size_t	len, va_list	ap)
 {
-	if (each_len(blc, f_blc))
-		return (1);
-	s_blc[FMTSTR] = (char *)blc + f_blc[ORDERLEN];
-	if (f_blc[CONTENT] == Ec)
-		s_blc[CONTENTSTR][0] = va_arg(ap, char);
-	else if (f_blc[CONTENT] == Es)
-		s_blc[CONTENTSTR] = va_arg(ap, char *);
-	else if (f_blc[CONTENT] == Ep)
-		itosx(s_blc[CONTENTSTR], va_arg(ap, void *));
-	else if (f_blc[CONTENT] == Ex || f_blc[CONTENT] == EX)
-		itosx(s_blc[CONTENTSTR], va_arg(ap, unsigned int));
-	else if (f_blc[CONTENT] == Ed || f_blc[CONTENT] == Ei)
-		itosd(s_blc[CONTENTSTR], va_arg(ap, int), f_blc);
-	else if (f_blc[CONTENT] == Eu)
-		itosu(s_blc[CONTENTSTR], va_arg(ap, unsigned int));
-	else if (f_blc[CONTENT] == Eper)
-		s_blc[CONTENTSTR][0] = '%';
-	adjust(s_blc, f_blc);
-	if (f_blc[DIRECTION] == ZERO_right)
+	t_block	b;
+	char	*s;
+
+	if (!*fmt)
 	{
-		f_blc[ZERO] += f_blc[BLANK];
-		f_blc[BLANK] = 0;
+		s = malloc(len + 1);
+		s[len] = '\0';
+		return (s);
+	}
+	ft_bzero(&b, sizeof(t_block));
+	b.nums = b.buf;
+	b.fmts = (char *)fmt;
+	if (mkblc(&b, ap))
+		return (NULL);
+	s = block(b.fmts + b.fmtl, len + blclen(&b), ap);
+	if (s)
+		mkput(s + len, &b);
+	return (s);
+}
+
+int	mkblc(t_block	*b, va_list	ap)
+{
+	if (each_len(b))
+		return (1);
+	if (b->type == 'c')
+		b->nums[0] = va_arg(ap, int);
+	else if (b->type == 's')
+		b->nums = va_arg(ap, char *);
+	else if (b->type == 'p')
+		itosx(b->nums, (unsigned long int)va_arg(ap, void *));
+	else if (b->type == 'x' || b->type == 'X')
+		itosx(b->nums, va_arg(ap, unsigned int));
+	else if (b->type == 'd' || b->type == 'i')
+		itosd(b->nums, va_arg(ap, int), b->sing);
+	else if (b->type == 'u')
+		itosu(b->nums, va_arg(ap, unsigned int));
+	else if (b->type == '%')
+		b->nums[0] = '%';
+	adjust(b);
+	if (b->direct == ZERO_right)
+	{
+		b->zero += b->spase;
+		b->spase = 0;
 	}
 	return (0);
 }
 
-void	adjust(char	*s_blc[], size_t	*f_blc)
+void	adjust(t_block	*b)
 {
-	f_blc[CONTENTLEN] = ft_strlen(s_blc[CONTENTSTR]);
-	if (f_blc[ZERO] < f_blc[CONTENTLEN])
+	size_t	i;
+
+	b->numl = ft_strlen(b->nums);
+	i = b->numl + ft_strlen(b->sing);
+	if (b->zero < i)
 	{
-		if (f_blc[BLANK] + f_blc[ZERO] < f_blc[CONTENTLEN])
-			f_blc[BLANK] = 0;
+		if (b->spase + b->zero < i)
+			b->spase = 0;
 		else
-			f_blc[BLANK] -= f_blc[CONTENTLEN] - f_blc[ZERO];
-		f_blc[ZERO] = 0;
+			b->spase -= i - b->zero;
+		b->zero = 0;
 	}
 	else
-		f_blc[ZERO] -= f_blc[CONTENTLEN];
-	if (f_blc[CONTENT] == Ep)
-		f_blc[SING] = ZEROX_0x;
-	if (f_blc[CONTENT] == EX && f_blc[SING] == ZEROX_0x)
-		f_blc[SING] = _0X;
-	if (f_blc[CONTENT] == Ex && !ft_memcmp(s_blc[CONTENTSTR], "0", 2))
-		f_blc[SING] = DEFAULT_none;
-	if (f_blc[CONTENT] == EX && !ft_memcmp(s_blc[CONTENTSTR], "0", 2))
-		f_blc[SING] = DEFAULT_none;
-	if (f_blc[CONTENT] == Eper)
-		f_blc[SING] = DEFAULT_none;
+		b->zero -= i;
+	if (b->type == 'p')
+		ft_strlcpy(b->sing, "0x", 3);
+	if (b->type == 'X')
+		strupper(b->nums);
+	if (b->type == 'X' && !ft_memcmp(b->sing, "0x", 3))
+		ft_strlcpy(b->sing, "0X", 3);
+	if ((b->type == 'X' || b->type == 'x' ) && !ft_memcmp(b->nums, "0", 2))
+		ft_bzero(b->sing, 3);
+	if (b->type == '%')
+		ft_bzero(b->sing, 3);
 	return ;
 }
 
-int	each_len(const char	*block, size_t	*f_blc)
+int	each_len(t_block	*b)
 {
-	if (*block != '%')
-		return (0);
-	f_blc[ORDERLEN]++;
-	if (set_esc(block[f_blc[ORDERLEN]], f_blc[SING], f_blc[DIRECTION], f_blc))
-		return (1);
+	char	c;
+
+	if (*(b->fmts) == '%')
+	{
+		b->fmts++;
+		if (set_type(b))
+			return (1);
+	}
+	c = b->fmts[b->fmtl];
+	while (c && c != '%')
+	{
+		b->fmtl++;
+		c = b->fmts[b->fmtl];
+	}
 	return (0);
 }
