@@ -6,12 +6,12 @@
 #    By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 17:47:53 by blyu              #+#    #+#              #
-#    Updated: 2022/03/16 17:47:54 by blyu             ###   ########.fr        #
+#    Updated: 2022/03/16 19:01:38 by blyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libftprintf.a
-SRC			= ft_printf.c itos.c output.c set.c
+SRC			= ft_printf.c itos.c set.c tool.c
 HEADER		= mk_ft_printf.h
 SRC_b		= ft_printf_bonus.c itos_bonus.c set_bonus.c tool_bonus.c
 HEADER_b	= mk_ft_printf_bonus.h
