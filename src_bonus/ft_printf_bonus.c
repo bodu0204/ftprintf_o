@@ -50,7 +50,7 @@ int	mkblc(t_block	*b, va_list	ap)
 TEST
 	if (each_len(b))
 		return (1);
-	printf("type = %c\n", f->type);	TEST
+	printf("type = %c\n", b->type);	TEST
 	if (b->type == 'c')
 		b->fmts[0] = va_arg(ap, int);
 	else if (b->type == 's')
