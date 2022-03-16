@@ -70,6 +70,7 @@ int	mkblc(t_block	*b, va_list	ap)
 		b->zero += b->spase;
 		b->spase = 0;
 	}
+	TEST
 	return (0);
 }
 
