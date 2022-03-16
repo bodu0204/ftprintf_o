@@ -52,20 +52,20 @@ TEST
 		return (1);
 	printf("type = %c\n", b->type);	TEST
 	if (b->type == 'c')
-		b->fmts[0] = va_arg(ap, int);
+		b->nums[0] = va_arg(ap, int);
 	else if (b->type == 's')
-		b->fmts = va_arg(ap, char *);
+		b->nums = va_arg(ap, char *);
 	else if (b->type == 'p')
-		itosx(b->fmts, (unsigned long int)va_arg(ap, void *));
+		itosx(b->nums, (unsigned long int)va_arg(ap, void *));
 	else if (b->type == 'x' || b->type == 'X')
-		itosx(b->fmts, va_arg(ap, unsigned int));
+		itosx(b->nums, va_arg(ap, unsigned int));
 	else if (b->type == 'd' || b->type == 'i')
-		itosd(b->fmts, va_arg(ap, int), b->sing);
+		itosd(b->nums, va_arg(ap, int), b->sing);
 	else if (b->type == 'u')
-		itosu(b->fmts, va_arg(ap, unsigned int));
+		itosu(b->nums, va_arg(ap, unsigned int));
 	else if (b->type == '%')
 	{TEST
-		b->fmts[0] = '%';
+		b->nums[0] = '%';
 	}/* test */
 	TEST
 	adjust(b);
