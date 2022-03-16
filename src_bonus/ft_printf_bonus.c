@@ -47,10 +47,9 @@ char*	block(const char	*fmt, size_t	len, va_list	ap)
 
 int	mkblc(t_block	*b, va_list	ap)
 {
-	TEST
+TEST
 	if (each_len(b))
 		return (1);
-	TEST
 	if (b->type == 'c')
 		b->fmts[0] = va_arg(ap, int);
 	else if (b->type == 's')
@@ -65,6 +64,7 @@ int	mkblc(t_block	*b, va_list	ap)
 		itosu(b->fmts, va_arg(ap, unsigned int));
 	else if (b->type == '%')
 		b->fmts[0] = '%';
+TEST
 	adjust(b);
 	if (b->direct == ZERO_right)
 	{
