@@ -47,6 +47,7 @@ char*	block(const char	*fmt, size_t	len, va_list	ap)
 
 int	mkblc(t_block	*b, va_list	ap)
 {
+	TEST
 	if (each_len(b))
 		return (1);
 	if (b->type == 'c')
