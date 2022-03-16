@@ -50,6 +50,7 @@ int	mkblc(t_block	*b, va_list	ap)
 TEST
 	if (each_len(b))
 		return (1);
+	printf("type = %c\n", f->type);	TEST
 	if (b->type == 'c')
 		b->fmts[0] = va_arg(ap, int);
 	else if (b->type == 's')
@@ -59,7 +60,7 @@ TEST
 	else if (b->type == 'x' || b->type == 'X')
 		itosx(b->fmts, va_arg(ap, unsigned int));
 	else if (b->type == 'd' || b->type == 'i')
-		{TEST itosd(b->fmts, va_arg(ap, int), b->sing);}
+		itosd(b->fmts, va_arg(ap, int), b->sing);
 	else if (b->type == 'u')
 		itosu(b->fmts, va_arg(ap, unsigned int));
 	else if (b->type == '%')
