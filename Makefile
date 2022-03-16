@@ -73,8 +73,8 @@ gentest1 :
 	mv $(TESTER_1) $(TESTER_d)
 
 test1 : gentest1 submitfile
-	cp rf $(SUBMIT_d) $(TEST1)
-	cp rf $(TESTER_d)$(TESTER_1) $(TEST1)
+	cp -rf $(SUBMIT_d) $(TEST1)
+	cp -rf $(TESTER_d)$(TESTER_1) $(TEST1)
 
 fclean :
 	rm -f $(NAME)
