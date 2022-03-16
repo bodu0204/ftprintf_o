@@ -73,7 +73,10 @@ int	mkblc(t_block	*b, va_list	ap)
 
 void	adjust(t_block	*b)
 {
+	size_t	i;
+
 	b->numl = ft_strlen(b->nums);
+	i = b->numl + ft_strlen(b->sing);
 	if (b->zero < b->numl)
 	{
 		if (b->spase + b->zero < b->numl)
