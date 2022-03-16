@@ -50,6 +50,7 @@ int	mkblc(t_block	*b, va_list	ap)
 	TEST
 	if (each_len(b))
 		return (1);
+	TEST
 	if (b->type == 'c')
 		b->fmts[0] = va_arg(ap, int);
 	else if (b->type == 's')
@@ -70,7 +71,6 @@ int	mkblc(t_block	*b, va_list	ap)
 		b->zero += b->spase;
 		b->spase = 0;
 	}
-	TEST
 	return (0);
 }
 
