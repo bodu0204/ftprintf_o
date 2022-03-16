@@ -9,53 +9,9 @@
 
 enum
 {
-	DIRECTION,
-	BLANK,
-	SING,
-	ZERO,
-	CONTENT,
-	CONTENTLEN,
-	ORDERLEN,
-	BLOCKLEN,
-	B_FMT,
-};
-
-enum
-{
-	DEFAULT_none,
-	SPASE_spase,
-	PLUS_plus,
-	_minus,
-	ZEROX_0x,
-	_0X,
-};
-
-enum
-{
 	DEFAULT_right,
 	ZERO_right,
 	_left,
-};
-
-enum
-{
-	Enone,
-	Ec,
-	Es,
-	Ep,
-	Ed,
-	Ei,
-	Eu,
-	Ex,
-	EX,
-	Eper,
-};
-
-enum
-{
-	FMTSTR,
-	CONTENTSTR,
-	B_STR,
 };
 
 typedef struct s_block
@@ -72,4 +28,18 @@ typedef struct s_block
 	char	buf[BUFFER];
 }	t_block;
 
+char*	block(const char	*fmt, size_t	len, va_list	ap);
+int		mkblc(t_block	*b, va_list	ap);
+int		each_len(t_block	*b);
+void	adjust(t_block	*b);
+int		set_sing(t_block	*b);
+int		set_len(t_block	*b);
+int		set_esc(t_block	*b);
+void	itosx(char	*str, unsigned long int	n);
+void	itosu(char	*str, unsigned int	n);
+void	itosd(char	*str, int	n, char	*sig);
+void	mkput(char	*buf, t_block	*b);
+size_t	blclen(t_block	*b);
+void	strupper(char	*s);
+size_t	charset(char	*buf, char	c, size_t	l);
 #endif

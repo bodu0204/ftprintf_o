@@ -28,7 +28,11 @@ char*	block(const char	*fmt, size_t	len, va_list	ap)
 	char	*s;
 
 	if(!*fmt)
-		return(malloc(len));
+	{
+		s = malloc(len + 1);
+		s[len] = '\0';
+		return (s);
+	}
 	ft_bzero(&b, sizeof(t_block));
 	b.nums = b.buf;
 	b.fmts = fmt;
@@ -42,7 +46,7 @@ char*	block(const char	*fmt, size_t	len, va_list	ap)
 
 int	mkblc(t_block	*b, va_list	ap)
 {
-	if (each_len(b))/* .fmtsを進めとけ */ /* .fmtlを作れ */
+	if (each_len(b))
 		return (1);
 	if (b->type == 'c')
 		b->fmts[0] = va_arg(ap, int);
@@ -69,33 +73,33 @@ int	mkblc(t_block	*b, va_list	ap)
 
 void	adjust(t_block	*b)
 {
-	f_blc[CONTENTLEN] = ft_strlen(s_blc[CONTENTSTR]);
-	if (f_blc[ZERO] < f_blc[CONTENTLEN])
+	b->numl = ft_strlen(b->nums);
+	if (b->zero < b->numl)
 	{
-		if (f_blc[BLANK] + f_blc[ZERO] < f_blc[CONTENTLEN])
-			f_blc[BLANK] = 0;
+		if (b->spase + b->zero < b->numl)
+			b->spase = 0;
 		else
-			f_blc[BLANK] -= f_blc[CONTENTLEN] - f_blc[ZERO];
-		f_blc[ZERO] = 0;
+			b->spase -= b->numl - b->zero;
+		b->zero = 0;
 	}
 	else
-		f_blc[ZERO] -= f_blc[CONTENTLEN];
-	if (f_blc[CONTENT] == Ep)
-		f_blc[SING] = ZEROX_0x;
-	if (f_blc[CONTENT] == EX)
-		strupper(s_blc[CONTENTSTR]);
-	if (f_blc[CONTENT] == EX && f_blc[SING] == ZEROX_0x)
-		f_blc[SING] = _0X;
-	if (f_blc[CONTENT] == Ex && !ft_memcmp(s_blc[CONTENTSTR], "0", 2))
-		f_blc[SING] = DEFAULT_none;
-	if (f_blc[CONTENT] == EX && !ft_memcmp(s_blc[CONTENTSTR], "0", 2))
-		f_blc[SING] = DEFAULT_none;
-	if (f_blc[CONTENT] == Eper)
-		f_blc[SING] = DEFAULT_none;
+		b->zero -= b->numl;
+	if (b->type == 'p')
+		ft_strlcpy(b->sing, "0x", 3);
+	if (b->type == 'X')
+		strupper(b->nums);
+	if (b->type == 'X' && !ft_memcmp(b->sing, "0x", 3))
+		ft_strlcpy(b->sing, "0X", 3);
+	if (b->type == 'x' && !ft_memcmp(b->nums, "0", 2))
+		ft_bzero(b->sing, 3);
+	if (b->type == 'X' && !ft_memcmp(b->nums, "0", 2))
+		ft_bzero(b->sing, 3);
+	if (b->type == '%')
+		ft_bzero(b->sing, 3);
 	return ;
 }
 
-int	each_len(t_block	*b)/* .fmtsを進めとけ */ /* .fmtlを作れ */
+int	each_len(t_block	*b)
 {
 	char	c;
 	if (*(b->fmts) == '%')

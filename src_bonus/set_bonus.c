@@ -30,28 +30,28 @@ int	set_sing(t_block	*b)
 
 int	set_len(t_block	*b)
 {
-	size_t	i;
+	void	*i;
 
-	f_blc[BLANK] = ft_atoi(block + f_blc[ORDERLEN]);
-	while (ft_isdigit(block[f_blc[ORDERLEN]]))
-		f_blc[ORDERLEN]++;
-	if (block[f_blc[ORDERLEN]] == '.')
-		f_blc[ORDERLEN]++;
-	i = f_blc[ORDERLEN];
-	f_blc[ZERO] = ft_atoi(block + f_blc[ORDERLEN]);
-	while (ft_isdigit(block[f_blc[ORDERLEN]]))
-		f_blc[ORDERLEN]++;
-	if (i != f_blc[ORDERLEN] && block[f_blc[ORDERLEN]] == 'c')
+	b->spase = ft_atoi(b->fmts);
+	while (ft_isdigit(*(b->fmts)))
+		b->fmts++;
+	if (*(b->fmts) == '.')
+		b->fmts++;
+	i = b->fmts;
+	b->zero = ft_atoi(b->fmts);
+	while (ft_isdigit(*(b->fmts)))
+		b->fmts++;
+	if (i != b->fmts && *(b->fmts) == 'c')
 		return (1);
-	if (block[f_blc[ORDERLEN]] != 's' || block[f_blc[ORDERLEN]] != '%')
+	if (*(b->fmts) != 's' || *(b->fmts) != '%')
 	{
-		if (f_blc[BLANK] < f_blc[ZERO])
-			f_blc[BLANK] = 0;
+		if (b->spase < b->zero)
+			b->spase = 0;
 		else
-			f_blc[BLANK] -= f_blc[ZERO];
+			b->spase -= b->zero;
 	}
 	else
-		f_blc[ZERO] = 0;
+		b->zero = 0;
 	return (0);
 }
 
@@ -90,16 +90,6 @@ void	read_sing(t_block	*b, int	*i)
 		else
 			break ;
 		b->fmts++;
-	}
-	return ;
-}
-
-void	strupper(char	*s)
-{
-	while(*s)
-	{
-		*s = ft_toupper(*s);
-		s++;
 	}
 	return ;
 }
