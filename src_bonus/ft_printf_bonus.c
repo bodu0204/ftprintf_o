@@ -1,4 +1,3 @@
-#include "ft_printf_bonus.h"
 void show(char* s)
 {
     size_t i;
@@ -34,6 +33,9 @@ void show(char* s)
         ii += line;
     }
 }
+
+#include "ft_printf_bonus.h"
+
 int	ft_printf(const char	*fmt, ...)
 {
 	va_list	ap;
@@ -51,7 +53,6 @@ int	ft_printf(const char	*fmt, ...)
 	if (str)
 	{
 		rtn = write(1, str, ft_strlen(str));
-		show(str); /* test */
 		free(str);
 	}
 	return (rtn);

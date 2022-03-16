@@ -42,9 +42,11 @@ void	mkput(char	*buf, t_block	*b)
 	i = 0;
 	if (b->direct != _left)
 		buf += charset(buf, ' ', b->spase);
-	buf += ft_strlcpy(buf, b->sing, 3);
+	ft_memcpy(buf, b->sing, ft_strlen(b->sing));
+	buf += ft_strlen(b->sing);
 	buf += charset(buf, '0', b->zero);
-	buf += ft_strlcpy(buf, b->nums, b->numl);
+	ft_memcpy(buf, b->nums, b->numl);
+	buf += b->numl;
 	if (b->direct == _left)
 		buf += charset(buf, ' ', b->spase);
 	ft_memcpy(buf, b->fmts, b->fmtl);
