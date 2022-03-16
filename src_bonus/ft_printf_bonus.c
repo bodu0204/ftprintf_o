@@ -67,6 +67,7 @@ TEST
 	{TEST
 		b->fmts[0] = '%';
 	}/* test */
+	TEST
 	adjust(b);
 	if (b->direct == ZERO_right)
 	{
