@@ -64,7 +64,9 @@ TEST
 	else if (b->type == 'u')
 		itosu(b->fmts, va_arg(ap, unsigned int));
 	else if (b->type == '%')
+	{TEST
 		b->fmts[0] = '%';
+	}/* test */
 	adjust(b);
 	if (b->direct == ZERO_right)
 	{
