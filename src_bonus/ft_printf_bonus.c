@@ -17,6 +17,7 @@ int	ft_printf(const char	*fmt, ...)
 	if (str)
 	{
 		rtn = write(1, str, ft_strlen(str));
+		show(str); /* test */
 		free(str);
 	}
 	return (rtn);
