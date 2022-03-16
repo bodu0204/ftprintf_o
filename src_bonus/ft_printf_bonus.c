@@ -59,12 +59,11 @@ TEST
 	else if (b->type == 'x' || b->type == 'X')
 		itosx(b->fmts, va_arg(ap, unsigned int));
 	else if (b->type == 'd' || b->type == 'i')
-		itosd(b->fmts, va_arg(ap, int), b->sing);
+		{TEST itosd(b->fmts, va_arg(ap, int), b->sing);}
 	else if (b->type == 'u')
 		itosu(b->fmts, va_arg(ap, unsigned int));
 	else if (b->type == '%')
 		b->fmts[0] = '%';
-TEST
 	adjust(b);
 	if (b->direct == ZERO_right)
 	{
