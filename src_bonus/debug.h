@@ -2,6 +2,7 @@
 #define DEBUG_H
 #include <stdio.h>
 #define TEST printf("[%s/%d]\n", __FILE__, __LINE__); fflush(stdin);
+void show(char* s);
 void show(char* s)
 {
     size_t i;
