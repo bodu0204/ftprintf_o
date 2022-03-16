@@ -6,12 +6,12 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:47:47 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/16 17:47:48 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/16 17:59:45 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTFTPRINTF_H
-# define LIBFTFTPRINTF_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 # include "libft.h"
 # include "ft_printf.h"
 #endif
