@@ -55,7 +55,7 @@ int	set_len(t_block	*b)
 	return (0);
 }
 
-int	set_esc(t_block	*b)
+int	set_type(t_block	*b)
 {
 	b->type = *(b->fmts);
 	if ((b->type == 'c' && !*(b->sing) && b->direct != ZERO_right) \

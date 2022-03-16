@@ -33,7 +33,7 @@ int		each_len(t_block	*b);
 void	adjust(t_block	*b);
 int		set_sing(t_block	*b);
 int		set_len(t_block	*b);
-int		set_esc(t_block	*b);
+int		set_type(t_block	*b);
 void	itosx(char	*str, unsigned long int	n);
 void	itosu(char	*str, unsigned int	n);
 void	itosd(char	*str, int	n, char	*sig);
