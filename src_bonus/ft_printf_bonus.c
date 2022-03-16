@@ -22,12 +22,12 @@ int	ft_printf(const char	*fmt, ...)
 	return (rtn);
 }
 
-char*	block(const char	*fmt, size_t	len, va_list	ap)
+char	*block(const char	*fmt, size_t	len, va_list	ap)
 {
 	t_block	b;
 	char	*s;
 
-	if(!*fmt)
+	if (!*fmt)
 	{
 		s = malloc(len + 1);
 		s[len] = '\0';
@@ -36,7 +36,7 @@ char*	block(const char	*fmt, size_t	len, va_list	ap)
 	ft_bzero(&b, sizeof(t_block));
 	b.nums = b.buf;
 	b.fmts = (char *)fmt;
-	if(mkblc(&b, ap))
+	if (mkblc(&b, ap))
 		return (NULL);
 	s = block(b.fmts + b.fmtl, len + blclen(&b), ap);
 	if (s)
@@ -93,9 +93,7 @@ void	adjust(t_block	*b)
 		strupper(b->nums);
 	if (b->type == 'X' && !ft_memcmp(b->sing, "0x", 3))
 		ft_strlcpy(b->sing, "0X", 3);
-	if (b->type == 'x' && !ft_memcmp(b->nums, "0", 2))
-		ft_bzero(b->sing, 3);
-	if (b->type == 'X' && !ft_memcmp(b->nums, "0", 2))
+	if ((b->type == 'X' || b->type == 'x' ) && !ft_memcmp(b->nums, "0", 2))
 		ft_bzero(b->sing, 3);
 	if (b->type == '%')
 		ft_bzero(b->sing, 3);
@@ -105,6 +103,7 @@ void	adjust(t_block	*b)
 int	each_len(t_block	*b)
 {
 	char	c;
+
 	if (*(b->fmts) == '%')
 	{
 		b->fmts++;

@@ -2,7 +2,7 @@
 
 void	strupper(char	*s)
 {
-	while(*s)
+	while (*s)
 	{
 		*s = ft_toupper(*s);
 		s++;

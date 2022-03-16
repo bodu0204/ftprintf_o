@@ -61,11 +61,11 @@ int	set_type(t_block	*b)
 	if ((b->type == 'c' && !*(b->sing) && b->direct != ZERO_right) \
 	|| (b->type == 's' && !*(b->sing) && b->direct != ZERO_right) \
 	|| (b->type == 'p' && !*(b->sing)) \
-	|| (b->type == 'd' && ft_strncmp("0x", b->sing ,3)) \
-	|| (b->type == 'i' && ft_strncmp("0x", b->sing ,3)) \
+	|| (b->type == 'd' && ft_strncmp("0x", b->sing, 3)) \
+	|| (b->type == 'i' && ft_strncmp("0x", b->sing, 3)) \
 	|| (b->type == 'u' && !*(b->sing)) \
-	|| (b->type == 'x' && (!*(b->sing) || !ft_strncmp("0x", b->sing ,3))) \
-	|| (b->type == 'X' && (!*(b->sing) || !ft_strncmp("0x", b->sing ,3))) \
+	|| (b->type == 'x' && (!*(b->sing) || !ft_strncmp("0x", b->sing, 3))) \
+	|| (b->type == 'X' && (!*(b->sing) || !ft_strncmp("0x", b->sing, 3))) \
 	|| (b->type == '%'))
 		b->fmts++;
 	else

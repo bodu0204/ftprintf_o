@@ -1,11 +1,10 @@
 #ifndef FT_PRINTF_BONUS_H
-#define FT_PRINTF_BONUS_H
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft.h"
-#include "debug.h"/* test */
-#define BUFFER 32
+# define FT_PRINTF_BONUS_H
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft.h"
+# define BUFFER 32
 
 enum
 {
@@ -28,7 +27,7 @@ typedef struct s_block
 	char	buf[BUFFER];
 }	t_block;
 
-char*	block(const char	*fmt, size_t	len, va_list	ap);
+char	*block(const char	*fmt, size_t	len, va_list	ap);
 int		mkblc(t_block	*b, va_list	ap);
 int		each_len(t_block	*b);
 void	adjust(t_block	*b);
