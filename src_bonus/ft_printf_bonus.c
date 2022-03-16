@@ -3,77 +3,71 @@
 int	ft_printf(const char	*fmt, ...)
 {
 	va_list	ap;
-	int		i;
+	int		rtn;
+	char	*str;
 
 	if (!fmt)
 		return (-1);
 	if (!*fmt)
 		return (0);
+	rtn = -1;
 	va_start(ap, fmt);
-	i = block(fmt, fmt + ft_strlen(fmt) - 1, ap);
+	str = block(fmt, 0, ap);
 	va_end(ap);
-	return (i);
-}
-
-int	block(const char	*s, const char	*e, va_list	ap)
-{
-	size_t	f_blc[B_FMT];
-	char	*s_blc[B_STR];
-	char	con[BUFFER];
-	int		putlen;
-	int		i;
-
-	ft_bzero(f_blc, sizeof(f_blc));
-	putlen = 0;
-	ft_bzero(con, sizeof(con));
-	s_blc[CONTENTSTR] = con;
-	while (e > s && *e != '%')
+	if (str)
 	{
-		e--;
-		f_blc[BLOCKLEN]++;
+		rtn = write(1, str, ft_strlen(str));
+		free(str);
 	}
-	f_blc[BLOCKLEN]++;
-	if (mkblc(e, s_blc, f_blc, ap))
-	return (-1);
-	if (e > s)
-		putlen = block(s, e - 1, ap);
-	if (putlen == -1)
-		return (-1);
-	i = output(s_blc, f_blc);
-	if (i == -1)
-		return (-1);
-	return (putlen + i);
+	return (rtn);
 }
 
-int	mkblc(const char	*blc, char	*s_blc[], size_t	*f_blc, va_list	ap)
+char*	block(const char	*fmt, size_t	len, va_list	ap)
 {
-	if (each_len(blc, f_blc))
-	return (1);
-	s_blc[FMTSTR] = (char *)blc + f_blc[ORDERLEN];
-	if (f_blc[CONTENT] == Ec)
-		s_blc[CONTENTSTR][0] = va_arg(ap, int);
-	else if (f_blc[CONTENT] == Es)
-		s_blc[CONTENTSTR] = va_arg(ap, char *);
-	else if (f_blc[CONTENT] == Ep)
-		itosx(s_blc[CONTENTSTR], (unsigned long int)va_arg(ap, void *));
-	else if (f_blc[CONTENT] == Ex || f_blc[CONTENT] == EX)
-		itosx(s_blc[CONTENTSTR], va_arg(ap, unsigned int));
-	else if (f_blc[CONTENT] == Ed || f_blc[CONTENT] == Ei)
-		itosd(s_blc[CONTENTSTR], va_arg(ap, int), f_blc);
-	else if (f_blc[CONTENT] == Eu)
-		itosu(s_blc[CONTENTSTR], va_arg(ap, unsigned int));
-	else if (f_blc[CONTENT] == Eper)
-		s_blc[CONTENTSTR][0] = '%';
-	adjust(s_blc, f_blc);
-	if (f_blc[DIRECTION] == ZERO_right)
+	t_block	b;
+	char	*s;
+
+	if(!*fmt)
+		return(malloc(len));
+	ft_bzero(&b, sizeof(t_block));
+	b.nums = b.buf;
+	b.fmts = fmt;
+	if(mkblc(&b, ap))
+		return (NULL);
+	s = block(b.fmts + b.fmtl, len + blclen(&b), ap);
+	if (s)
+		mkput(s + len, &b);
+	return (s);
+}
+
+int	mkblc(t_block	*b, va_list	ap)
+{
+	if (each_len(b))/* .fmtsを進めとけ */ /* .fmtlを作れ */
+		return (1);
+	if (b->type == 'c')
+		b->fmts[0] = va_arg(ap, int);
+	else if (b->type == 's')
+		b->fmts = va_arg(ap, char *);
+	else if (b->type == 'p')
+		itosx(b->fmts, (unsigned long int)va_arg(ap, void *));
+	else if (b->type == 'x' || b->type == 'X')
+		itosx(b->fmts, va_arg(ap, unsigned int));
+	else if (b->type == 'd' || b->type == 'i')
+		itosd(b->fmts, va_arg(ap, int), b->sing);
+	else if (b->type == 'u')
+		itosu(b->fmts, va_arg(ap, unsigned int));
+	else if (b->type == '%')
+		b->fmts[0] = '%';
+	adjust(b);
+	if (b->direct == ZERO_right)
 	{
-		f_blc[ZERO] += f_blc[BLANK];
-		f_blc[BLANK] = 0;
+		b->zero += b->spase;
+		b->spase = 0;
 	}
 	return (0);
 }
 
-void	adjust(char	*s_blc[], size_t	*f_blc)
+void	adjust(t_block	*b)
 {
 	f_blc[CONTENTLEN] = ft_strlen(s_blc[CONTENTSTR]);
 	if (f_blc[ZERO] < f_blc[CONTENTLEN])
@@ -101,16 +95,24 @@ void	adjust(char	*s_blc[], size_t	*f_blc)
 	return ;
 }
 
-int	each_len(const char	*block, size_t	*f_blc)
+int	each_len(t_block	*b)/* .fmtsを進めとけ */ /* .fmtlを作れ */
 {
-	if (*block != '%')
-		return (0);
-	f_blc[ORDERLEN]++;
-	if (set_sing(block, f_blc))
-		return (1);
-	if (set_len(block, f_blc))
-		return (1);
-	if (set_esc(block[f_blc[ORDERLEN]], f_blc[SING], f_blc[DIRECTION], f_blc))
-		return (1);
+	char	c;
+	if (*(b->fmts) == '%')
+	{
+		b->fmts++;
+		if (set_sing(b))
+			return (1);
+		if (set_len(b))
+			return (1);
+		if (set_type(b))
+			return (1);
+	}
+	c = b->fmts[b->fmtl];
+	while (c && c != '%')
+	{
+		b->fmtl++;
+		c = b->fmts[b->fmtl];
+	}
 	return (0);
 }

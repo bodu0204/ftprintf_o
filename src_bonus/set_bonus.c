@@ -1,34 +1,34 @@
 #include "ft_printf_bonus.h"
-void	read_sing(const char	*block, size_t	*f_blc, size_t	*i);
+void	read_sing(t_block	*b, int	*i);
 
-int	set_sing(const char	*block, size_t	*f_blc)
+int	set_sing(t_block	*b)
 {
-	size_t	i[5];
+	int	i[5];
 
 	ft_bzero(i, sizeof(i));
-	read_sing(block, f_blc, i);
+	read_sing(b, i);
 	if (i[0] * i[1])
 		return (1);
 	if (i[2] * i[3] || i[3] * i[4] || i[4] * i[2])
-	return (1);
+		return (1);
 	if (i[0])
-		f_blc[DIRECTION] = _left;
+		b->direct = _left;
 	else if (i[1])
-		f_blc[DIRECTION] = ZERO_right;
+		b->direct = ZERO_right;
 	else
-		f_blc[DIRECTION] = DEFAULT_right;
+		b->direct = DEFAULT_right;
 	if (i[2])
-		f_blc[SING] = ZEROX_0x;
+		ft_strlcpy(b->sing, "0x", 3);
 	else if (i[3])
-		f_blc[SING] = PLUS_plus;
+		ft_strlcpy(b->sing, "+", 3);
 	else if (i[4])
-		f_blc[SING] = SPASE_spase;
+		ft_strlcpy(b->sing, " ", 3);
 	else
-		f_blc[SING] = DEFAULT_none;
+		t_bzero(b->sing, 3);
 	return (0);
 }
 
-int	set_len(const char	*block, size_t	*f_blc)
+int	set_len(t_block	*b)
 {
 	size_t	i;
 
@@ -52,54 +52,46 @@ int	set_len(const char	*block, size_t	*f_blc)
 	}
 	else
 		f_blc[ZERO] = 0;
-	/* test */printf("YES-set-%d\n",__LINE__); fflush(stdin);
 	return (0);
 }
 
-int	set_esc(char	c, size_t	s, size_t	d, size_t	*f_blc)
+int	set_esc(t_block	*b)
 {
-	if (c == 'c' && s == DEFAULT_none && d != ZERO_right)
-		f_blc[CONTENT] = Ec;
-	else if (c == 's' && s == DEFAULT_none && d != ZERO_right)
-		f_blc[CONTENT] = Es;
-	else if (c == 'p' && s == DEFAULT_none)
-		f_blc[CONTENT] = Ep;
-	else if (c == 'd' && s != ZEROX_0x)
-		f_blc[CONTENT] = Ed;
-	else if (c == 'i' && s != ZEROX_0x)
-		f_blc[CONTENT] = Ei;
-	else if (c == 'u' && s == DEFAULT_none)
-		f_blc[CONTENT] = Eu;
-	else if (c == 'x' && (s == DEFAULT_none || s == ZEROX_0x))
-		f_blc[CONTENT] = Ex;
-	else if (c == 'X' && (s == DEFAULT_none || s == ZEROX_0x))
-		f_blc[CONTENT] = EX;
-	else if (c == '%')
-		f_blc[CONTENT] = Eper;
+	b->type = *(b->fmts);
+	if ((b->type == 'c' && !*(b->sing) && b->direct != ZERO_right) \
+	|| (b->type == 's' && !*(b->sing) && b->direct != ZERO_right) \
+	|| (b->type == 'p' && !*(b->sing)) \
+	|| (b->type == 'd' && ft_strncmp("0x", b->sing ,3)) \
+	|| (b->type == 'i' && ft_strncmp("0x", b->sing ,3)) \
+	|| (b->type == 'u' && !*(b->sing)) \
+	|| (b->type == 'x' && (!*(b->sing) || !ft_strncmp("0x", b->sing ,3))) \
+	|| (b->type == 'X' && (!*(b->sing) || !ft_strncmp("0x", b->sing ,3))) \
+	|| (b->type == '%'))
+		b->fmts++;
 	else
 		return (1);
-	f_blc[ORDERLEN]++;
 	return (0);
 }
 
-void	read_sing(const char	*block, size_t	*f_blc, size_t	*i)
+void	read_sing(t_block	*b, int	*i)
 {
 	while (1)
 	{
-		if (block[f_blc[ORDERLEN]] == '-')
-			i[0]++;
-		else if (block[f_blc[ORDERLEN]] == '0')
-			i[1]++;
-		else if (block[f_blc[ORDERLEN]] == '#')
-			i[2]++;
-		else if (block[f_blc[ORDERLEN]] == '+')
-			i[3]++;
-		else if (block[f_blc[ORDERLEN]] == ' ')
-			i[4]++;
+		if (*(b->fmts) == '-')
+			i[0] = 1;
+		else if (*(b->fmts) == '0')
+			i[1] = 1;
+		else if (*(b->fmts) == '#')
+			i[2] = 1;
+		else if (*(b->fmts) == '+')
+			i[3] = 1;
+		else if (*(b->fmts) == ' ')
+			i[4] = 1;
 		else
 			break ;
-		f_blc[ORDERLEN]++;
+		b->fmts++;
 	}
+	return ;
 }
 
 void	strupper(char	*s)
