@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "libft.h"
+#include "debug.h"/* test */
 #define BUFFER 32
 
 enum

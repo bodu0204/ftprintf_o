@@ -27,6 +27,7 @@ char*	block(const char	*fmt, size_t	len, va_list	ap)
 	t_block	b;
 	char	*s;
 
+	TEST
 	if(!*fmt)
 	{
 		s = malloc(len + 1);
