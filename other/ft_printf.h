@@ -1,4 +1,4 @@
-#ifndef FTPRINTF_H
-# define FTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 int	ft_printf(const char	*fmt, ...);
 #endif
