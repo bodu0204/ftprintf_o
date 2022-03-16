@@ -11,11 +11,11 @@ SUBMIT_d		= $(PROJECT_NAME)/
 LIBFT_GIT		= https://github.com/bodu0204/libft_o.git
 LIBFT_od		= libft_o/
 LIBFT_d			= libft/
-TESTER_PASS		= tester/
+TESTER_d		= tester/
 TESTER_0		= test.c
-TEST0			= test_case_0.a
+TEST0			= test_case_0.out
 TESTER_1_GIT	= https://github.com/Tripouille/printfTester.git
-TESTER_1		= tester_1
+TESTER_1		= printfTester
 TEST1			= test_case_1/
 CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror -I./
@@ -63,14 +63,17 @@ submit42 : push outclean submitfile
 	mv $(SUBMIT_d) ../
 
 test0 : bonus
-	cp $(TESTER_PASS)$(TESTER_0) ./
+	cp $(TESTER_d)$(TESTER_0) ./
 	$(CC) $(CFLAGS) $(TESTER_0) $(NAME) -o $(TEST0)
 	rm -f $(TESTER_0)
 
-test1 : submitfile
+gentest1 :
 	git clone $(TESTER_1_GIT) $(TESTER_1)
-	cp -rf $(SUBMIT_d) $(TEST1)
-	mv $(TESTER_1) $(TEST1)
+	mv $(TESTER_1) $(TESTER_d)
+
+test1 : gentest1 submitfile
+	cp rf $(SUBMIT_d) $(test1)
+	cp rf $(TESTER_d)$(TESTER_1) $(test1)
 
 fclean :
 	rm -f $(NAME)
