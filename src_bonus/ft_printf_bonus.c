@@ -77,16 +77,16 @@ void	adjust(t_block	*b)
 
 	b->numl = ft_strlen(b->nums);
 	i = b->numl + ft_strlen(b->sing);
-	if (b->zero < b->numl)
+	if (b->zero < i)
 	{
-		if (b->spase + b->zero < b->numl)
+		if (b->spase + b->zero < i)
 			b->spase = 0;
 		else
-			b->spase -= b->numl - b->zero;
+			b->spase -= i - b->zero;
 		b->zero = 0;
 	}
 	else
-		b->zero -= b->numl;
+		b->zero -= i;
 	if (b->type == 'p')
 		ft_strlcpy(b->sing, "0x", 3);
 	if (b->type == 'X')
