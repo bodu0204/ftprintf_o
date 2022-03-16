@@ -1,5 +1,5 @@
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef MK_FT_PRINTF_BONUS_H
+# define MK_FT_PRINTF_BONUS_H
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>

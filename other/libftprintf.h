@@ -1,5 +1,5 @@
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
-#include "libft.h"
-int	ft_printf(const char	*fmt, ...);
+#ifndef LIBFTFTPRINTF_H
+# define LIBFTFTPRINTF_H
+# include "libft.h"
+# include "ft_printf.h"
 #endif

@@ -1,8 +1,8 @@
 NAME		= libftprintf.a
 SRC			= ft_printf.c itos.c output.c set.c
-HEADER		= ft_printf.h
+HEADER		= mk_ft_printf.h
 SRC_b		= ft_printf_bonus.c itos_bonus.c set_bonus.c tool_bonus.c
-HEADER_b	= ft_printf_bonus.h
+HEADER_b	= mk_ft_printf_bonus.h
 OBJS		= $(SRC:%.c=%.o)
 OBJS_b		= $(SRC_b:%.c=%.o)
 CC			= gcc
