@@ -85,12 +85,13 @@ test1 : gentest1 submitfile
 fclean :
 	rm -f $(NAME)
 	rm -f $(TEST0)
+	rm -f $(TESTER_0)
 	rm -rf $(SUBMIT_d)
 	rm -rf $(SUBMIT_42d)
 	rm -rf $(LIBFT_d)
-	rm -rf $(NAME_h)
-	rm -rf $(LIBFT_h)
-	rm -rf $(PRINTF_h)
+	rm -f $(NAME_h)
+	rm -f $(LIBFT_h)
+	rm -f $(PRINTF_h)
 
 outclean :
 	rm -rf ../$(SUBMIT_d)
