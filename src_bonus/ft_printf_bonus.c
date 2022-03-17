@@ -6,7 +6,7 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 08:50:11 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/18 08:59:44 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ int	mkblc(t_block	*b, va_list	ap)
 
 void	adjust(t_block	*b)
 {
-	size_t	i;
-
 	if (b->type == 'p')
 		ft_strlcpy(b->sing, "0x", 3);
 	if (b->type == 'X')
@@ -97,18 +95,23 @@ void	adjust(t_block	*b)
 		ft_bzero(b->sing, 3);
 	if (b->type == '%')
 		ft_bzero(b->sing, 3);
-	b->numl = ft_strlen(b->nums);
-	i = b->numl + ft_strlen(b->sing);
-	if (b->zero < i)
+	if (b->type == 'c' && !(b->nums))
 	{
-		if (b->spase + b->zero < i)
+		b->nums = b->buf;
+		ft_strlcpy(b->nums, "(null)", BUFFER);
+	}
+	b->numl = ft_strlen(b->nums);
+	b->singl = ft_strlen(b->sing);
+	if (b->zero < b->numl + b->singl)
+	{
+		if (b->spase + b->zero < b->numl + b->singl)
 			b->spase = 0;
 		else
-			b->spase -= i - b->zero;
+			b->spase -= b->numl + b->singl - b->zero;
 		b->zero = 0;
 	}
 	else
-		b->zero -= i;
+		b->zero -= b->numl + b->singl;
 	return ;
 }
 

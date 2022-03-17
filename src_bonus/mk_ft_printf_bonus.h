@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mk_ft_printf_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:48 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/16 17:48:49 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 08:52:51 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_block
 	int		direct;
 	size_t	spase;
 	char	sing[3];
+	size_t	singl;
 	size_t	zero;
 	char	*nums;
 	size_t	numl;
