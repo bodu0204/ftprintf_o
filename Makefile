@@ -26,17 +26,17 @@ all : $(NAME)
 
 $(NAME) : submitfile
 	cd "$(PWD)/$(SUBMIT_d)" && make all
-	cp -rf $(SUBMIT_d)$(NAME)
-	cp -rf $(SUBMIT_d)$(NAME_h)
-	cp -rf $(SUBMIT_d)$(LIBFT_h)
-	cp -rf $(SUBMIT_d)$(PRINTF_h)
+	cp -f $(SUBMIT_d)$(NAME)
+	cp -f $(SUBMIT_d)$(NAME_h)
+	cp -f $(SUBMIT_d)$(LIBFT_h)
+	cp -f $(SUBMIT_d)$(PRINTF_h)
 
 bonus : submitfile
 	cd "$(PWD)/$(SUBMIT_d)" && make bonus
-	cp -rf $(SUBMIT_d)$(NAME)
-	cp -rf $(SUBMIT_d)$(NAME_h)
-	cp -rf $(SUBMIT_d)$(LIBFT_h)
-	cp -rf $(SUBMIT_d)$(PRINTF_h)
+	cp -f $(SUBMIT_d)$(NAME)
+	cp -f $(SUBMIT_d)$(NAME_h)
+	cp -f $(SUBMIT_d)$(LIBFT_h)
+	cp -f $(SUBMIT_d)$(PRINTF_h)
 
 push : fclean
 	git add .
