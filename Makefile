@@ -10,7 +10,9 @@ SUBMIT_42d		= submit_to_42/
 SUBMIT_d		= $(PROJECT_NAME)/
 LIBFT_GIT		= https://github.com/bodu0204/libft_o.git
 LIBFT_od		= libft_o/
+LIBFT_h			= libft.h
 LIBFT_d			= libft/
+PRINTF_h		= ft_printf.h
 TESTER_d		= tester/
 TESTER_0		= test.c
 TEST0			= test_case_0.out
@@ -24,13 +26,17 @@ all : $(NAME)
 
 $(NAME) : submitfile
 	cd "$(PWD)/$(SUBMIT_d)" && make all
-	mv $(SUBMIT_d)$(NAME) ./
-	mv $(SUBMIT_d)$(NAME_h) ./
+	cp -rf $(SUBMIT_d)$(NAME)
+	cp -rf $(SUBMIT_d)$(NAME_h)
+	cp -rf $(SUBMIT_d)$(LIBFT_h)
+	cp -rf $(SUBMIT_d)$(PRINTF_h)
 
 bonus : submitfile
 	cd "$(PWD)/$(SUBMIT_d)" && make bonus
-	mv $(SUBMIT_d)$(NAME) ./
-	mv $(SUBMIT_d)$(NAME_h) ./
+	cp -rf $(SUBMIT_d)$(NAME)
+	cp -rf $(SUBMIT_d)$(NAME_h)
+	cp -rf $(SUBMIT_d)$(LIBFT_h)
+	cp -rf $(SUBMIT_d)$(PRINTF_h)
 
 push : fclean
 	git add .
@@ -82,6 +88,9 @@ fclean :
 	rm -rf $(SUBMIT_d)
 	rm -rf $(SUBMIT_42d)
 	rm -rf $(LIBFT_d)
+	rm -rf $(NAME_h)
+	rm -rf $(LIBFT_h)
+	rm -rf $(PRINTF_h)
 
 outclean :
 	rm -rf ../$(SUBMIT_d)
