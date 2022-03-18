@@ -6,12 +6,11 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 09:19:29 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/18 09:44:45 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mk_ft_printf_bonus.h"
-#include "debug.h"/* test */
 
 int	ft_printf(const char	*fmt, ...)
 {
