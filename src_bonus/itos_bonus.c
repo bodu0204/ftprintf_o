@@ -6,12 +6,12 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:44 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 12:15:28 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 12:17:34 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mk_ft_printf_bonus.h"
-#include "debug.h"
+#include "debug.h"/* test */
 
 
 void	itosx(char	*str, unsigned long int	n)
@@ -20,7 +20,7 @@ void	itosx(char	*str, unsigned long int	n)
 	unsigned long int	nn;
 	int					i;
 
-printf("%lu", n); TEST
+printf("%#lx", n); TEST
 	if (n == 0)
 	{
 		*str = '0';
