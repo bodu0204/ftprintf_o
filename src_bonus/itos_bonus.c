@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:44 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 12:38:31 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 12:38:59 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ s = str;/* test */
 	{
 printf("made:%s/", s);TEST
 		i = n / nn;
-printf("num[i] = %d", num[i]);TEST
+printf("num[i] = %c", num[i]);TEST
 		*str = num[i];
 		str++;
 		n -= i * nn;
