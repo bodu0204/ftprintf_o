@@ -6,7 +6,7 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 09:06:35 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/18 09:10:36 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	mkblc(t_block	*b, va_list	ap)
 
 void	adjust(t_block	*b)
 {
-	if (b->type == 'c' && !(b->nums))
+	if (b->type == 's' && !(b->nums))
 	{
 		b->nums = b->buf;
 		ft_strlcpy(b->nums, "(null)", BUFFER);
