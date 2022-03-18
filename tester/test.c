@@ -17,7 +17,7 @@ int main (void)
 	printf("\n");
 	printf("your\n");
 
-	printf("[start]");
+	printf("[start]"); fflush(stdout);
 	i = ft_printf(" %-1c %-2c %-3c ", '0', 0, '1');/*  */
 	printf("[end]");
 
