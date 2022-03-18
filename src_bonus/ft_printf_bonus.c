@@ -6,7 +6,7 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 23:44:35 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/19 00:08:11 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,6 @@ void	adjust(t_block	*b)
 	|| ((b->type == 'X' || b->type == 'x' ) && !ft_memcmp(b->nums, "0", 2)))
 		ft_bzero(b->sing, 3);
 	b->numl = ft_strlen(b->nums);
-	if (b->type == 'c')
-		b->numl = 1;
 	b->singl = ft_strlen(b->sing);
 	if (b->zero < b->numl + b->singl)
 	{
