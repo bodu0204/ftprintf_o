@@ -9,7 +9,7 @@ int main (void)
 	printf("ori\n");
 
 	printf("[start]");
-	i = printf("apple, %%+010d = %+010d, %%-10.80s = %-10.80s, %%#X = %#X, %%#X = %#X, %%#5%% = %#5%, %%p = %p\n", 63, s, 1024, 0, s);/*  */
+	i = printf(" %-1c %-2c %-3c ", '0', 0, '1');/*  */
 	printf("[end]");
 
 	printf("\nreturn = %d\n", i);
@@ -17,7 +17,7 @@ int main (void)
 	printf("your\n");
 
 	printf("[start]");
-	i = ft_printf("apple, %%+010d = %+010d, %%-10.80s = %-10.80s, %%#X = %#X, %%#X = %#X, %%#5%% = %#5%, %%p = %p\n", 63, s, 1024, 0, s);/*  */
+	i = ft_printf(" %-1c %-2c %-3c ", '0', 0, '1');/*  */
 	printf("[end]");
 
 	printf("\nreturn = %d\n", i);
