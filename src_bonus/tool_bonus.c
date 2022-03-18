@@ -6,7 +6,7 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:55 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 22:49:34 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/18 22:50:34 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ for (size_t i = 0; i < b->spase; i++) write(1, " ", 1);/* test */
 	}
 write(1, b->fmts, b->fmtl);/* test */
 	ft_memcpy(buf, b->fmts, b->fmtl);
-write(1, "[", 1);/* test */
+write(1, "]", 1);/* test */
 	return ;
 }
