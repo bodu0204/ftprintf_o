@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 12:25:48 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 12:26:41 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	mkblc(t_block	*b, va_list	ap)
 		b->nums = va_arg(ap, char *);
 	else if (b->type == 'p')
 		{/* test */
+TEST
 			itosx(b->nums, (unsigned long int)va_arg(ap, void *));
 printf("type:%c, num:%s", b->type, b->nums); TEST
 		}/* test */
