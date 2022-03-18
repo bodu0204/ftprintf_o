@@ -6,7 +6,7 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:48 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 08:52:51 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/18 09:13:51 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	itosu(char	*str, unsigned int	n);
 void	itosd(char	*str, int	n, char	*sig);
 void	mkput(char	*buf, t_block	*b);
 size_t	blclen(t_block	*b);
-void	strupper(char	*s);
+void	strupper(int	i, ...);
 size_t	charset(char	*buf, char	c, size_t	l);
 #endif

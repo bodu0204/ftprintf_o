@@ -3,22 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   tool_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:55 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/16 17:48:56 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 09:17:03 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mk_ft_printf_bonus.h"
 
-void	strupper(char	*s)
+void	strupper(int	i, ...)
 {
-	while (*s)
+	va_list	ap;
+	char	*s;
+
+	va_start(ap, i);
+	while (i)
 	{
-		*s = ft_toupper(*s);
-		s++;
+		s = va_arg(ap, char	*);
+		while (*s)
+		{
+			*s = ft_toupper(*s);
+			s++;
+		}
+		i--;
 	}
+	va_end(ap);
 	return ;
 }
 

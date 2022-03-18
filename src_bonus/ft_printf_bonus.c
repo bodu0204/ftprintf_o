@@ -6,7 +6,7 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 09:10:36 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/18 09:19:29 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ char	*block(const char	*fmt, size_t	len, va_list	ap)
 	t_block	b;
 	char	*s;
 
-	TEST
 	if (!*fmt)
 	{
 		s = malloc(len + 1);
@@ -95,9 +94,7 @@ void	adjust(t_block	*b)
 	if (b->type == 'p')
 		ft_strlcpy(b->sing, "0x", 3);
 	if (b->type == 'X')
-		strupper(b->nums);
-	if (b->type == 'X' && !ft_memcmp(b->sing, "0x", 3))
-		ft_strlcpy(b->sing, "0X", 3);
+		strupper(2, b->nums, b->sing);
 	if ((b->type == 'X' || b->type == 'x' ) && !ft_memcmp(b->nums, "0", 2))
 		ft_bzero(b->sing, 3);
 	if (b->type == '%')
