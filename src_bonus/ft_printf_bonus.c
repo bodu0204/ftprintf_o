@@ -6,7 +6,7 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 22:56:55 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/18 23:44:35 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ char	*block(const char	*fmt, size_t	len, va_list	ap)
 	b.fmts = (char *)fmt;
 	if (mkblc(&b, ap))
 		return (NULL);
-TEST
-printf("b->spase = %zu", b.spase); TEST
-printf("b->singl = %zu", b.singl); TEST
-printf("b->zero = %zu", b.zero); TEST
-printf("b->numl = %zu", b.numl); TEST
-printf("b->fmtl = %zu", b.fmtl); TEST
+//TEST
+//printf("b->spase = %zu", b.spase); TEST
+//printf("b->singl = %zu", b.singl); TEST
+//printf("b->zero = %zu", b.zero); TEST
+//printf("b->numl = %zu", b.numl); TEST
+//printf("b->fmtl = %zu", b.fmtl); TEST
 	s = block(b.fmts + b.fmtl, len + blclen(&b), ap);
 	if (s)
 		mkput(s + len, &b);
@@ -105,6 +105,8 @@ void	adjust(t_block	*b)
 	|| ((b->type == 'X' || b->type == 'x' ) && !ft_memcmp(b->nums, "0", 2)))
 		ft_bzero(b->sing, 3);
 	b->numl = ft_strlen(b->nums);
+	if (b->type == 'c')
+		b->numl = 1;
 	b->singl = ft_strlen(b->sing);
 	if (b->zero < b->numl + b->singl)
 	{
