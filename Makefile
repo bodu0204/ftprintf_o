@@ -5,7 +5,7 @@ SRC_PASS		= src/
 SRCb_PASS		= src_bonus/
 OTHER_PASS		= other/
 OBJS			= $(SRC:%.c=%.o)
-SUBMIT_42		= 
+SUBMIT_42		= git@vogsphere-v2.42tokyo.jp:vogsphere/intra-uuid-229498e1-b257-44c3-a6d6-c120f20d1ac8-4056900-blyu
 SUBMIT_42d		= submit_to_42/
 SUBMIT_d		= $(PROJECT_NAME)/
 LIBFT_GIT		= https://github.com/bodu0204/libft_o.git
