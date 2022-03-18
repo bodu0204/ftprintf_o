@@ -6,11 +6,12 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 12:00:41 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 12:21:03 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mk_ft_printf_bonus.h"
+#include "debug.h"/* test */
 
 int	ft_printf(const char	*fmt, ...)
 {
@@ -74,6 +75,7 @@ int	mkblc(t_block	*b, va_list	ap)
 		itosu(b->nums, va_arg(ap, unsigned int));
 	else if (b->type == '%')
 		b->nums[0] = '%';
+printf("type:%c, num:%s", b->type, b->numl); TEST
 	adjust(b);
 	if (b->direct == ZERO_right)
 	{
