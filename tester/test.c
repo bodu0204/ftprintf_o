@@ -5,6 +5,7 @@ int main (void)
 {
 	int i;
 	char *s = "hello";
+	(void)s;
 
 	printf("ori\n");
 
