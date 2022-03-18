@@ -6,12 +6,11 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 12:28:16 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 12:47:43 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mk_ft_printf_bonus.h"
-#include "debug.h"/* test */
 
 int	ft_printf(const char	*fmt, ...)
 {
@@ -66,11 +65,7 @@ int	mkblc(t_block	*b, va_list	ap)
 	else if (b->type == 's')
 		b->nums = va_arg(ap, char *);
 	else if (b->type == 'p')
-		{/* test */
-TEST
 			itosx(b->nums, (unsigned long int)va_arg(ap, void *));
-printf("type:%c, num:%s", b->type, b->nums); TEST
-		}/* test */
 	else if (b->type == 'x' || b->type == 'X')
 		itosx(b->nums, va_arg(ap, unsigned int));
 	else if (b->type == 'd' || b->type == 'i')
