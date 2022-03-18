@@ -6,11 +6,12 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 09:04:49 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/18 09:06:35 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mk_ft_printf_bonus.h"
+#include "debug.h"/* test */
 
 int	ft_printf(const char	*fmt, ...)
 {
@@ -39,6 +40,7 @@ char	*block(const char	*fmt, size_t	len, va_list	ap)
 	t_block	b;
 	char	*s;
 
+	TEST
 	if (!*fmt)
 	{
 		s = malloc(len + 1);
