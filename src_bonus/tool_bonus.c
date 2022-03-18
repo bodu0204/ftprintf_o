@@ -6,7 +6,7 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:55 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 09:33:03 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/18 09:33:43 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,6 @@ size_t	blclen(t_block	*b)
 	len += b->numl;
 	len += b->fmtl;
 	return (len);
-}
-
-size_t	charset(char	*buf, char	c, size_t	l)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < l)
-	{
-		buf[i] = c;
-		i++;
-	}
-	return (i);
 }
 
 void	mkput(char	*buf, t_block	*b)
