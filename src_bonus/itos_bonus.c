@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:44 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 12:43:46 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 12:45:41 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ s = str;/* test */
 	}
 	num = "0123456789abcdef";
 	nn = 1;
-	while (n / nn > 16)
+	while (n / nn >= 16)
 		nn *= 16;
 printf("nn  =  %#lx/", nn);TEST
 	while (nn > 0)
@@ -59,7 +59,7 @@ void	itosu(char	*str, unsigned int	n)
 	}
 	num = "0123456789";
 	nn = 1;
-	while (n / nn > 10)
+	while (n / nn >= 10)
 		nn *= 10;
 	while (nn > 0)
 	{
@@ -86,7 +86,7 @@ void	itosd(char	*str, int	n, char	*sig)
 	else
 		n *= -1;
 	nn = 1;
-	while (n / nn < -10)
+	while (n / nn =< -10)
 		nn *= 10;
 	while (nn > 0)
 	{
