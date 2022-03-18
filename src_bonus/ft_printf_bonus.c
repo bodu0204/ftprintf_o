@@ -6,7 +6,7 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 08:59:44 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/18 09:04:49 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ int	mkblc(t_block	*b, va_list	ap)
 
 void	adjust(t_block	*b)
 {
+	if (b->type == 'c' && !(b->nums))
+	{
+		b->nums = b->buf;
+		ft_strlcpy(b->nums, "(null)", BUFFER);
+	}
 	if (b->type == 'p')
 		ft_strlcpy(b->sing, "0x", 3);
 	if (b->type == 'X')
@@ -95,11 +100,6 @@ void	adjust(t_block	*b)
 		ft_bzero(b->sing, 3);
 	if (b->type == '%')
 		ft_bzero(b->sing, 3);
-	if (b->type == 'c' && !(b->nums))
-	{
-		b->nums = b->buf;
-		ft_strlcpy(b->nums, "(null)", BUFFER);
-	}
 	b->numl = ft_strlen(b->nums);
 	b->singl = ft_strlen(b->sing);
 	if (b->zero < b->numl + b->singl)
