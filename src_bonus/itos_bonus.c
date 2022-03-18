@@ -6,11 +6,13 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:44 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/16 17:48:45 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 12:13:23 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mk_ft_printf_bonus.h"
+#include "debug.h"
+
 
 void	itosx(char	*str, unsigned long int	n)
 {
@@ -18,6 +20,7 @@ void	itosx(char	*str, unsigned long int	n)
 	unsigned long int	nn;
 	int					i;
 
+pritf("%lu", n); TEST
 	if (n == 0)
 	{
 		*str = '0';
