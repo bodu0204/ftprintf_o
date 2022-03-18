@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:44 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 12:30:32 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 12:33:37 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	itosx(char	*str, unsigned long int	n)
 	int					i;
 
 printf("%#lx", n); TEST
+char *s;/* test */
+s = str;/* test */
 	if (n == 0)
 	{
 		*str = '0';
@@ -32,7 +34,7 @@ printf("%#lx", n); TEST
 		nn *= 16;
 	while (nn > 0)
 	{
-TEST
+printf("made:%s", s);TEST
 		i = n / nn;
 		*str = *(num + i);
 		str++;
