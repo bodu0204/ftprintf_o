@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 12:26:41 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 12:28:16 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ printf("type:%c, num:%s", b->type, b->nums); TEST
 		itosu(b->nums, va_arg(ap, unsigned int));
 	else if (b->type == '%')
 		b->nums[0] = '%';
-printf("type:%c, num:%s", b->type, b->nums); TEST
 	adjust(b);
 	if (b->direct == ZERO_right)
 	{
