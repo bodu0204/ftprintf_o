@@ -6,7 +6,7 @@
 /*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 22:34:41 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/18 22:35:01 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*block(const char	*fmt, size_t	len, va_list	ap)
 	b.fmts = (char *)fmt;
 	if (mkblc(&b, ap))
 		return (NULL);
-printf("b->numl = %zu", b->numl); TEST
+printf("b->numl = %zu", b.numl); TEST
 	s = block(b.fmts + b.fmtl, len + blclen(&b), ap);
 	if (s)
 		mkput(s + len, &b);
