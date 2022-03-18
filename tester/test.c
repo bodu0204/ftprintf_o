@@ -4,7 +4,7 @@
 int main (void)
 {
 	int i;
-	char *s = NULL;
+	char *s = "hello";
 
 	printf("ori\n");
 
