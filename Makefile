@@ -66,7 +66,7 @@ submit42 : push outclean submitfile
 	cd "$(PWD)/$(SUBMIT_42d)" && make push
 	mv $(SUBMIT_42d) $(SUBMIT_d)
 	rm -rf $(SUBMIT_d)
-	echo("Finished push to 42.\n")
+	echo "Finished push to 42.\n"
 
 test0 : bonus
 	cp $(TESTER_d)$(TESTER_0) ./
