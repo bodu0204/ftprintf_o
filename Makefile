@@ -61,7 +61,7 @@ submit : outclean submitfile
 submit42 : push outclean submitfile
 	git clone $(SUBMIT_42) $(SUBMIT_42d)
 	rm -f $(SUBMIT_42d)*
-	rm -rf $(SUBMIT_42d)*
+	rm -rf $(SUBMIT_42d)libft
 	cp -rf $(SUBMIT_d)* $(SUBMIT_42d)
 	rm -rf $(SUBMIT_d)
 	cd "$(PWD)/$(SUBMIT_42d)" && make push
