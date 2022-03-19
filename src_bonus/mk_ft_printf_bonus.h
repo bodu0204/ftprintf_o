@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:48 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 14:35:17 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 15:55:52 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ typedef struct s_rtn
 	char	*prt;
 }	t_rtn;
 
-//char	*block(const char	*fmt, size_t	len, va_list	ap);/* b */
-t_rtn	block(const char	*fmt, size_t	len, va_list	ap);/* a */
+t_rtn	block(const char	*fmt, size_t	len, va_list	ap);
 int		mkblc(t_block	*b, va_list	ap);
 int		each_len(t_block	*b);
 void	adjust(t_block	*b);
