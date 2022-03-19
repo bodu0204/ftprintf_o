@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 17:47:53 by blyu              #+#    #+#              #
-#    Updated: 2022/03/19 18:35:55 by blyu             ###   ########.fr        #
+#    Updated: 2022/03/19 18:43:08 by blyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ bonus : genlibft $(OBJS_b) $(HEADER_b)
 newlibft :
 	rm -rf $(LIBFT_d)
 	git clone $(LIBFT_GIT) $(LIBFT_od)
-	make submit -C$(LIBFT_od)
+	cd "$(LIBFT_od)" && make submit
 	rm -rf $(LIBFT_od)
 
 genlibft :
@@ -53,10 +53,12 @@ push : fclean
 
 clean :
 	rm -f $(OBJS) $(OBJS_b)
+	cd "$(LIBFT_d)" && make clean
 
 fclean : clean
 	rm -f $(NAME)
 	rm -f $(LIBFT_h)
 	rm -rf $(LIBFT_od)
+	cd "$(LIBFT_d)" && make clean
 
 re : fclean all
