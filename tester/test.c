@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 #include "libftprintf.h"
 
 int main (void)
@@ -10,7 +11,7 @@ int main (void)
 	printf("ori\n");
 
 	printf("[start]");
-	i = printf(" %c %c %c ", '0', 0, '1');/*  */
+	i = printf(" %+d %+d %+d %+d %+d %+d %+d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);/*  */
 	printf("[end]");
 
 	printf("\nreturn = %d\n", i);
@@ -18,7 +19,7 @@ int main (void)
 	printf("your\n");
 
 	printf("[start]"); fflush(stdout);
-	i = ft_printf(" %c %c %c ", '0', 0, '1');/*  */
+	i = ft_printf(" %+d %+d %+d %+d %+d %+d %+d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);/*  */
 	printf("[end]");
 
 	printf("\nreturn = %d\n", i);
