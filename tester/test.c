@@ -11,7 +11,7 @@ int main (void)
 	printf("ori\n");
 
 	printf("[start]");
-	i = printf("%+---++++++---+++10.5d", -42);/*  */
+	i = printf("%10d", -42);/*  */
 	printf("[end]");
 
 	printf("\nreturn = %d\n", i);
@@ -20,7 +20,7 @@ int main (void)
 	printf("your\n");
 
 	printf("[start]"); fflush(stdout);
-	i = ft_printf("%+---++++++---+++10.5d", -42);/*  */
+	i = ft_printf("%10d", -42);/*  */
 	printf("[end]");
 
 	printf("\nreturn = %d\n", i);
