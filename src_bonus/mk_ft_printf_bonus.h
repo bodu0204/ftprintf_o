@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mk_ft_printf_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:48 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/18 09:34:08 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/19 12:24:19 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,13 @@ typedef struct s_block
 	char	buf[BUFFER];
 }	t_block;
 
-char	*block(const char	*fmt, size_t	len, va_list	ap);
+typedef struct s_rtn
+{
+	char	*prt;
+	size_t	prtl;
+}	t_rtn;
+
+t_rtn	block(const char	*fmt, size_t	len, va_list	ap);
 int		mkblc(t_block	*b, va_list	ap);
 int		each_len(t_block	*b);
 void	adjust(t_block	*b);
@@ -50,7 +56,7 @@ int		set_type(t_block	*b);
 void	itosx(char	*str, unsigned long int	n);
 void	itosu(char	*str, unsigned int	n);
 void	itosd(char	*str, int	n, char	*sig);
-void	mkput(char	*buf, t_block	*b);
+size_t	mkput(char	*buf, t_block	*b);
 size_t	blclen(t_block	*b);
 void	strupper(int	i, ...);
 #endif

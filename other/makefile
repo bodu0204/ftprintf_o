@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+         #
+#    By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 17:47:53 by blyu              #+#    #+#              #
-#    Updated: 2022/03/18 20:04:15 by ryoakira         ###   ########.fr        #
+#    Updated: 2022/03/19 12:35:48 by blyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libftprintf.a
-SRC			= ft_printf.c itos.c set.c tool.c
+SRC			= adjust.c ft_printf.c itos.c set.c tool.c
 HEADER		= mk_ft_printf.h
-SRC_b		= ft_printf_bonus.c itos_bonus.c set_bonus.c tool_bonus.c
+SRC_b		= adjust_bonus.c ft_printf_bonus.c itos_bonus.c set_bonus.c tool_bonus.c
 HEADER_b	= mk_ft_printf_bonus.h
 OBJS		= $(SRC:%.c=%.o)
 OBJS_b		= $(SRC_b:%.c=%.o)

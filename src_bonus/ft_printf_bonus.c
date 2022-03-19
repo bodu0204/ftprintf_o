@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 00:08:11 by ryoakira         ###   ########.fr       */
+/*   Updated: 2022/03/19 12:26:39 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mk_ft_printf_bonus.h"
-#include "debug.h"/* test */
 
 int	ft_printf(const char	*fmt, ...)
 {
 	va_list	ap;
 	int		rtn;
-	char	*str;
+	t_rtn	r;
 
 	if (!fmt)
 		return (-1);
@@ -25,42 +24,41 @@ int	ft_printf(const char	*fmt, ...)
 		return (0);
 	rtn = -1;
 	va_start(ap, fmt);
-	str = block(fmt, 0, ap);
+	r = block(fmt, 0, ap);
 	va_end(ap);
-	if (str)
+	if (r.prt)
 	{
-		rtn = write(1, str, ft_strlen(str));
-		free(str);
+		rtn = write(1, r.prt, r.prtl);
+		free(r.prt);
+		if (rtn >= 0)
+			rtn = r.prtl;
 	}
 	return (rtn);
 }
 
-char	*block(const char	*fmt, size_t	len, va_list	ap)
+t_rtn	block(const char	*fmt, size_t	len, va_list	ap)
 {
 	t_block	b;
-	char	*s;
+	t_rtn	r;
 
+	ft_bzero(&r, sizeof(t_rtn));
 	if (!*fmt)
 	{
-		s = malloc(len + 1);
-		s[len] = '\0';
-		return (s);
+		r.prt = malloc(len + 1);
+		if (r.prt)
+			r.prt[len] = '\0';
+		r.prtl = len;
+		return (r);
 	}
 	ft_bzero(&b, sizeof(t_block));
 	b.nums = b.buf;
 	b.fmts = (char *)fmt;
 	if (mkblc(&b, ap))
-		return (NULL);
-//TEST
-//printf("b->spase = %zu", b.spase); TEST
-//printf("b->singl = %zu", b.singl); TEST
-//printf("b->zero = %zu", b.zero); TEST
-//printf("b->numl = %zu", b.numl); TEST
-//printf("b->fmtl = %zu", b.fmtl); TEST
-	s = block(b.fmts + b.fmtl, len + blclen(&b), ap);
-	if (s)
-		mkput(s + len, &b);
-	return (s);
+		return (r);
+	r = block(b.fmts + b.fmtl, len + blclen(&b), ap);
+	if (r.prt)
+		r.prtl += mkput(r.prt + len, &b);
+	return (r);
 }
 
 int	mkblc(t_block	*b, va_list	ap)
@@ -82,41 +80,7 @@ int	mkblc(t_block	*b, va_list	ap)
 	else if (b->type == '%')
 		b->nums[0] = '%';
 	adjust(b);
-	if (b->direct == ZERO_right)
-	{
-		b->zero += b->spase;
-		b->spase = 0;
-	}
 	return (0);
-}
-
-void	adjust(t_block	*b)
-{
-	if (b->type == 's' && !(b->nums))
-	{
-		b->nums = b->buf;
-		ft_strlcpy(b->nums, "(null)", BUFFER);
-	}
-	if (b->type == 'p')
-		ft_strlcpy(b->sing, "0x", 3);
-	if (b->type == 'X')
-		strupper(2, b->nums, b->sing);
-	if ((b->type == '%') \
-	|| ((b->type == 'X' || b->type == 'x' ) && !ft_memcmp(b->nums, "0", 2)))
-		ft_bzero(b->sing, 3);
-	b->numl = ft_strlen(b->nums);
-	b->singl = ft_strlen(b->sing);
-	if (b->zero < b->numl + b->singl)
-	{
-		if (b->spase + b->zero < b->numl + b->singl)
-			b->spase = 0;
-		else
-			b->spase -= b->numl + b->singl - b->zero;
-		b->zero = 0;
-	}
-	else
-		b->zero -= b->numl + b->singl;
-	return ;
 }
 
 int	each_len(t_block	*b)
