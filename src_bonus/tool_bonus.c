@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:55 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 15:57:07 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 15:59:20 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ size_t	mkput(char	*buf, t_block	*b)
 		buf += b->spase;
 	}
 	ft_memcpy(buf, b->fmts, b->fmtl);
-	if (b->type == 'c' && !*(b->nums))
-		return (1);
+//	if (b->type == 'c' && !*(b->nums))
+//		return (1);
 	return (0);
 }
