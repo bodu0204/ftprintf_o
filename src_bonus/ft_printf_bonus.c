@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 16:01:24 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 16:22:56 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_printf(const char	*fmt, ...)
 	va_end(ap);
 	if (r.prt)
 	{
-		rtn = write(1, r.prt, ft_strlen(r.prt));
+		rtn = write(1, r.prt, r.prtl);
 		free(r.prt);
 		if (rtn >= 0)
 			rtn = r.prtl;
