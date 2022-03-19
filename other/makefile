@@ -6,7 +6,7 @@
 #    By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 17:47:53 by blyu              #+#    #+#              #
-#    Updated: 2022/03/19 16:31:29 by blyu             ###   ########.fr        #
+#    Updated: 2022/03/19 18:35:55 by blyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ CFLAGS		= -Wall -Wextra -Werror -I./
 LIBFT_GIT	= https://github.com/bodu0204/libft_o.git
 LIBFT_od	= libft_o/
 LIBFT_d		= libft/
-LIBFT_a		= libft.a
 LIBFT_h		= libft.h
 PRINTF_a	= printf.a
 
@@ -57,6 +56,7 @@ clean :
 
 fclean : clean
 	rm -f $(NAME)
+	rm -f $(LIBFT_h)
 	rm -rf $(LIBFT_od)
 
 re : fclean all
