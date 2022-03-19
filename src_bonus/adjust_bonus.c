@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 15:13:52 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 17:04:29 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 17:11:12 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,22 @@ void	adjust(t_block	*b)
 	if ((b->type == '%') \
 	|| ((b->type == 'X' || b->type == 'x' ) && !ft_memcmp(b->nums, "0", 2)))
 		ft_bzero(b->sing, 3);
+	b->numl = ft_strlen(b->nums);
+	if (b->type == 'c')
+		b->numl = 1;
+	if (b->type == 's' && b->dot == _yes_dot)
+	{
+		if (b->numl > b->zero)
+			b->numl = b->zero;
+		b->zero = 0;
+	}
+	b->singl = ft_strlen(b->sing);
 	adjust1(b);
 	return ;
 }
 
 void	adjust1(t_block	*b)
 {
-	b->numl = ft_strlen(b->nums);
-	if (b->type == 'c')
-		b->numl = 1;
-	b->singl = ft_strlen(b->sing);
 	if (b->zero < b->numl)
 	{
 		if (b->spase + b->zero < b->numl)
