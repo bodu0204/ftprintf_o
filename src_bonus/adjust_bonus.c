@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 15:13:52 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 15:13:53 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 16:47:33 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,20 @@ void	adjust1(t_block	*b)
 	if (b->type == 'c')
 		b->numl = 1;
 	b->singl = ft_strlen(b->sing);
-	if (b->zero < b->numl + b->singl)
+	if (b->zero < b->numl)
 	{
-		if (b->spase + b->zero < b->numl + b->singl)
+		if (b->spase + b->zero < b->numl)
 			b->spase = 0;
 		else
-			b->spase -= b->numl + b->singl - b->zero;
+			b->spase -= b->numl - b->zero;
 		b->zero = 0;
 	}
 	else
-		b->zero -= b->numl + b->singl;
+		b->zero -= b->numl;
+	if(b->spase < b->singl)
+		b->spase = 0;
+	else
+		b->spase -= b->singl;
 	if (b->direct == ZERO_right)
 	{
 		b->zero += b->spase;
