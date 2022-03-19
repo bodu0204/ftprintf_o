@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 12:49:18 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 18:19:18 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_rtn	block(const char	*fmt, size_t	len, va_list	ap)
 	ft_bzero(&r, sizeof(t_rtn));
 	if (!*fmt)
 	{
-		r.prt = malloc(len + 1);
+		r.prt = ft_calloc(1, len + 1);
 		if (r.prt)
 			r.prt[len] = '\0';
 		r.prtl = len;
@@ -90,6 +90,10 @@ int	each_len(t_block	*b)
 	if (*(b->fmts) == '%')
 	{
 		b->fmts++;
+		if (set_sing(b))
+			return (1);
+		if (set_len(b))
+			return (1);
 		if (set_type(b))
 			return (1);
 	}

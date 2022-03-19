@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_bonus.c                                        :+:      :+:    :+:   */
+/*   set.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:52 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 12:42:19 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 18:19:35 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,21 @@ int	set_sing(t_block	*b)
 
 int	set_len(t_block	*b)
 {
-	void	*i;
-
 	b->spase = ft_atoi(b->fmts);
 	while (ft_isdigit(*(b->fmts)))
 		b->fmts++;
+	b->dot = DEFAULT_no_dot;
 	if (*(b->fmts) == '.')
+	{
+		b->dot = _yes_dot;
 		b->fmts++;
-	i = b->fmts;
+	}
 	b->zero = ft_atoi(b->fmts);
 	while (ft_isdigit(*(b->fmts)))
 		b->fmts++;
-	if (i != b->fmts && *(b->fmts) == 'c')
+	if (b->dot == _yes_dot && *(b->fmts) == 'c')
 		return (1);
-	if (*(b->fmts) != 's' && *(b->fmts) != '%')
+	if (*(b->fmts) != '%')
 	{
 		if (b->spase < b->zero)
 			b->spase = 0;

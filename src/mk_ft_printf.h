@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mk_ft_printf_bonus.h                               :+:      :+:    :+:   */
+/*   mk_ft_printf.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:48 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 12:42:08 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 18:19:31 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ enum
 	_left,
 };
 
+enum
+{
+	DEFAULT_no_dot,
+	_yes_dot,
+};
+
 typedef struct s_block
 {
 	int		direct;
@@ -32,6 +38,7 @@ typedef struct s_block
 	char	sing[3];
 	size_t	singl;
 	size_t	zero;
+	int		dot;
 	char	*nums;
 	size_t	numl;
 	char	type;
@@ -42,8 +49,8 @@ typedef struct s_block
 
 typedef struct s_rtn
 {
-	char	*prt;
 	size_t	prtl;
+	char	*prt;
 }	t_rtn;
 
 t_rtn	block(const char	*fmt, size_t	len, va_list	ap);
