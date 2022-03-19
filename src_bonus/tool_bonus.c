@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:55 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 12:26:14 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 12:38:34 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ size_t	blclen(t_block	*b)
 	len = b->spase;
 	len += b->singl;
 	len += b->zero;
-	if (b->type != 'c' && *(b->nums))
+	if (!(b->type == 'c' && !*(b->nums)))
 		len += b->numl;
 	len += b->fmtl;
 	return (len);
@@ -56,7 +56,7 @@ size_t	mkput(char	*buf, t_block	*b)
 	buf += b->singl;
 	ft_memset(buf, '0', b->zero);
 	buf += b->zero;
-	if (b->type != 'c' && *(b->nums))
+	if (!(b->type == 'c' && !*(b->nums)))
 	{
 		ft_memcpy(buf, b->nums, b->numl);
 		buf += b->numl;
