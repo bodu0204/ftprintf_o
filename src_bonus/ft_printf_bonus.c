@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 14:35:06 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 15:12:54 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,7 @@ int	ft_printf(const char	*fmt, ...)
 	return (rtn);
 }
 
-//char	*block(const char	*fmt, size_t	len, va_list	ap)/* b */
-//{
-//	t_block	b;
-//	char	*r;
-//
-//	if (!*fmt)
-//	{
-//		r = malloc(len + 1);
-//		if (r)
-//			r[len] = '\0';
-//		return (r);
-//	}
-//	ft_bzero(&b, sizeof(t_block));
-//	b.nums = b.buf;
-//	b.fmts = (char *)fmt;
-//	if (mkblc(&b, ap))
-//		return (NULL);
-//	r = block(b.fmts + b.fmtl, len + blclen(&b), ap);
-//	if (r)
-//		r.prtl += mkput(r.prt + len, &b);
-//	return (r);
-//}
-
-t_rtn	block(const char	*fmt, size_t	len, va_list	ap)/* a */
+t_rtn	block(const char	*fmt, size_t	len, va_list	ap)
 {
 	t_block	b;
 	t_rtn	r;
