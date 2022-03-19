@@ -6,7 +6,7 @@
 #    By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 17:47:53 by blyu              #+#    #+#              #
-#    Updated: 2022/03/19 18:43:08 by blyu             ###   ########.fr        #
+#    Updated: 2022/03/19 18:50:11 by blyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,6 @@ fclean : clean
 	rm -f $(NAME)
 	rm -f $(LIBFT_h)
 	rm -rf $(LIBFT_od)
-	cd "$(LIBFT_d)" && make clean
+	cd "$(LIBFT_d)" && make fclean
 
 re : fclean all
