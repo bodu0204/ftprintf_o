@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:48 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 15:55:52 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 17:00:47 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ enum
 	_left,
 };
 
+enum
+{
+	DEFAULT_no_dot,
+	_yes_dot,
+};
+
 typedef struct s_block
 {
 	int		direct;
@@ -32,6 +38,7 @@ typedef struct s_block
 	char	sing[3];
 	size_t	singl;
 	size_t	zero;
+	int		dot;
 	char	*nums;
 	size_t	numl;
 	char	type;
