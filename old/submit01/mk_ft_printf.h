@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mk_ft_printf_bonus.h                               :+:      :+:    :+:   */
+/*   mk_ft_printf.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:48 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 14:35:17 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/18 12:56:19 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MK_FT_PRINTF_BONUS_H
-# define MK_FT_PRINTF_BONUS_H
+#ifndef MK_FT_PRINTF_H
+# define MK_FT_PRINTF_H
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -40,14 +40,7 @@ typedef struct s_block
 	char	buf[BUFFER];
 }	t_block;
 
-typedef struct s_rtn
-{
-	size_t	prtl;
-	char	*prt;
-}	t_rtn;
-
-//char	*block(const char	*fmt, size_t	len, va_list	ap);/* b */
-t_rtn	block(const char	*fmt, size_t	len, va_list	ap);/* a */
+char	*block(const char	*fmt, size_t	len, va_list	ap);
 int		mkblc(t_block	*b, va_list	ap);
 int		each_len(t_block	*b);
 void	adjust(t_block	*b);
@@ -57,7 +50,7 @@ int		set_type(t_block	*b);
 void	itosx(char	*str, unsigned long int	n);
 void	itosu(char	*str, unsigned int	n);
 void	itosd(char	*str, int	n, char	*sig);
-size_t	mkput(char	*buf, t_block	*b);
+void	mkput(char	*buf, t_block	*b);
 size_t	blclen(t_block	*b);
 void	strupper(int	i, ...);
 #endif
