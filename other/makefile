@@ -6,7 +6,7 @@
 #    By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 17:47:53 by blyu              #+#    #+#              #
-#    Updated: 2022/03/19 15:03:10 by blyu             ###   ########.fr        #
+#    Updated: 2022/03/19 15:09:02 by blyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ bonus : genlibft $(OBJS_b) $(HEADER_b)
 newlibft :
 	rm -rf $(LIBFT_d)
 	git clone $(LIBFT_GIT) $(LIBFT_od)
-	cd "$(LIBFT_od)" && make submit
+	make submit -C$(LIBFT_od)
 	rm -rf $(LIBFT_od)
 
 genlibft :
