@@ -11,7 +11,7 @@ int main (void)
 	printf("ori\n");
 
 	printf("[start]");
-	i = printf("%#10x", 127);/*  */
+	i = printf("% d", 127);/*  */
 	printf("[end]");
 
 	printf("\nreturn = %d\n", i);
@@ -20,7 +20,7 @@ int main (void)
 	printf("your\n");
 
 	printf("[start]"); fflush(stdout);
-	i = ft_printf("%#10x", 127);/*  */
+	i = ft_printf("% d", 127);/*  */
 	printf("[end]");
 
 	printf("\nreturn = %d\n", i);
