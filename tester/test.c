@@ -11,7 +11,7 @@ int main (void)
 	printf("ori\n");
 
 	printf("[start]");
-	i = printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);/*  */
+	i = printf(" %c %c %c ", '0', 0, '1');/*  */
 	printf("[end]");
 
 	printf("\nreturn = %d\n", i);
@@ -20,7 +20,7 @@ int main (void)
 	printf("your\n");
 
 	printf("[start]"); fflush(stdout);
-	i = ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);/*  */
+	i = ft_printf(" %c %c %c ", '0', 0, '1');/*  */
 	printf("[end]");
 
 	printf("\nreturn = %d\n", i);
