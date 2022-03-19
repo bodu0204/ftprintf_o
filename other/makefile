@@ -6,7 +6,7 @@
 #    By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 17:47:53 by blyu              #+#    #+#              #
-#    Updated: 2022/03/19 14:50:29 by blyu             ###   ########.fr        #
+#    Updated: 2022/03/19 15:03:10 by blyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ newlibft :
 	rm -rf $(LIBFT_od)
 
 genlibft :
-	cd "$(LIBFT_d)" && make bonus
+	make bonus -C $(LIBFT_d)
 	cp $(LIBFT_d)$(LIBFT_h) ./
 
 push : fclean
