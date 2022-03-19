@@ -86,6 +86,7 @@ fclean :
 	rm -f $(NAME)
 	rm -f $(TEST0)
 	rm -f $(TESTER_0)
+	rm -rf $(TEST1)
 	rm -rf $(SUBMIT_d)
 	rm -rf $(SUBMIT_42d)
 	rm -rf $(LIBFT_d)
