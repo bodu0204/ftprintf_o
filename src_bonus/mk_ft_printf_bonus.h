@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:48 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 12:24:19 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/19 14:02:30 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ typedef struct s_block
 
 typedef struct s_rtn
 {
-	char	*prt;
 	size_t	prtl;
+	char	*prt;
 }	t_rtn;
 
 t_rtn	block(const char	*fmt, size_t	len, va_list	ap);
