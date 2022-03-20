@@ -105,6 +105,15 @@ https://guacamole.42tokyo.jp/#/
 
 
 
+write("appp")
+write("a")
+
+appp\0a\0
+
+
+
+
+
 
 
 
