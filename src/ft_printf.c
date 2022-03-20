@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 18:19:18 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/20 17:41:55 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_rtn	block(const char	*fmt, size_t	len, va_list	ap)
 		return (r);
 	r = block(b.fmts + b.fmtl, len + blclen(&b), ap);
 	if (r.prt)
-		r.prtl += mkput(r.prt + len, &b);
+		mkput(r.prt + len, &b);
 	return (r);
 }
 

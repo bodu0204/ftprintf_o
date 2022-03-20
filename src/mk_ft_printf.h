@@ -6,7 +6,7 @@
 /*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:48 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/19 18:19:31 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/20 17:42:05 by blyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		set_type(t_block	*b);
 void	itosx(char	*str, unsigned long int	n);
 void	itosu(char	*str, unsigned int	n);
 void	itosd(char	*str, int	n, char	*sig);
-size_t	mkput(char	*buf, t_block	*b);
+void	mkput(char	*buf, t_block	*b);
 size_t	blclen(t_block	*b);
 void	strupper(int	i, ...);
 #endif
