@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:48:41 by blyu              #+#    #+#             */
-/*   Updated: 2022/03/20 17:41:55 by blyu             ###   ########.fr       */
+/*   Updated: 2022/03/21 16:24:47 by ryoakira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,6 @@ int	each_len(t_block	*b)
 	if (*(b->fmts) == '%')
 	{
 		b->fmts++;
-		if (set_sing(b))
-			return (1);
-		if (set_len(b))
-			return (1);
 		if (set_type(b))
 			return (1);
 	}
