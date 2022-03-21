@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: blyu <blyu@student.42.fr>                  +#+  +:+       +#+         #
+#    By: ryoakira <ryoakira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 17:47:53 by blyu              #+#    #+#              #
-#    Updated: 2022/03/19 18:50:11 by blyu             ###   ########.fr        #
+#    Updated: 2022/03/21 18:38:31 by ryoakira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,10 @@ PRINTF_a	= printf.a
 
 all : $(NAME)
 
-$(NAME) : genlibft $(OBJS) $(HEADER)
+$(NAME) : fclean genlibft $(OBJS) $(HEADER)
 	ar rs $(NAME) $(OBJS) $(LIBFT_d)*.o
 
-bonus : genlibft $(OBJS_b) $(HEADER_b)
+bonus : fclean genlibft $(OBJS_b) $(HEADER_b)
 	ar rs $(NAME) $(OBJS_b) $(LIBFT_d)*.o
 
 .c.o : $(SRC) $(SRC_b)
