@@ -11,7 +11,7 @@ int main (void)
 	printf("ori\n");
 
 	printf("[start]");
-	i = printf("\n%.5c\n% d\n", 0, 127);/*  */
+	i = printf("\n%c\n% d\n", 0, 127);/*  */
 	printf("[end]");
 
 	printf("\nreturn = %d\n", i);
