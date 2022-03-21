@@ -58,6 +58,13 @@ submitfile : push clonelibft
 submit : outclean submitfile
 	mv $(SUBMIT_d) ../
 
+file : fclean clonelibft
+	mkdir $(SUBMIT_d)
+	cp $(SRC_PASS)* $(SUBMIT_d)
+	cp $(SRCb_PASS)* $(SUBMIT_d)
+	cp $(OTHER_PASS)* $(SUBMIT_d)
+	mv $(LIBFT_d) $(SUBMIT_d)
+
 submit42 : push outclean submitfile
 	git clone $(SUBMIT_42) $(SUBMIT_42d)
 	rm -rf $(SUBMIT_42d)*
