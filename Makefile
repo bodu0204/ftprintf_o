@@ -55,7 +55,7 @@ submitfile : push clonelibft
 	cp $(OTHER_PASS)* $(SUBMIT_d)
 	mv $(LIBFT_d) $(SUBMIT_d)
 
-submit : outclean submitfile
+submit : outclean file
 	mv $(SUBMIT_d) ../
 
 file : fclean clonelibft
